@@ -8,5 +8,5 @@ echo "--------FILE TRANSFER--------"
 cd ./bin/aarch64_Linux
 scp binary.aarch64.Linux rock64@192.168.1.150:
 cd ../..
-ssh rock64@192.168.1.150 './binary.aarch64.Linux'
+ssh rock64@192.168.1.150 './KinectIP.aarch64.Linux'
 exit

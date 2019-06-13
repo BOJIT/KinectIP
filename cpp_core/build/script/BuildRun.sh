@@ -8,4 +8,4 @@ echo "--------PROGRAM--------"
 arch=$(uname -p)
 platform=$(uname)
 path=$arch"_"$platform
-./bin/$path/binary.$arch.$platform
+./bin/$path/KinectIP.$arch.$platform
