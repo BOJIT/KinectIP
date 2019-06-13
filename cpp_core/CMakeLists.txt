@@ -1,6 +1,6 @@
 cmake_minimum_required( VERSION 3.0 )
 
-project( KinectIP )
+project( KinectIP2 )
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../../bin/${CMAKE_SYSTEM_PROCESSOR}_${CMAKE_SYSTEM_NAME})
 
