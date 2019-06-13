@@ -1,0 +1,64 @@
+///////Full log of all commands and dependencies for this project//////////
+
+
+****************
+- Dependencies:   
+    - git
+    - wiringPi
+    - apache
+    - GCC
+****************
+
+1 - flash sd with raspbian_stretch_lite
+
+2 - Enable SSH in boot directory
+  EXTRA - for zeroconf/Bonjour, simply use Avahi:
+  - sudo apt-get install avahi-daemon
+
+3 - sudo apt-get update
+  - sudo apt-get upgrade
+
+# install apache and PHP
+4 - sudo apt-get install apache2 -y
+  - sudo chown -R pi /var/www/html
+  - sudo apt-get install php libapache2-mod-php -y
+
+5 - use WinSCP to synchronise Pi_Server with /var/www/html
+
+# give apache permissions to write files (as well as the pi user!)
+6 - sudo chown -R www-data:www-data /var/www
+  - sudo gpasswd -a pi www-data
+  - sudo chmod -R g+rw /var/www
+  - sudo chmod 775 /var/www
+
+# install wiringPi with GPIO command line
+7 - sudo apt-get install git-core
+  - sudo apt-get update
+  - sudo apt-get upgrade
+  - cd
+  - git clone git://git.drogon.net/wiringPi
+  - cd wiringPi
+  - ./build
+
+# install/update GCC
+8 - sudo apt-get install gcc
+
+9 - use WinSCP to synchronise Pi_Local with /home/pi/Pi_Remote (create directory if missing)
+
+# build and run firmware with:
+10 - cd Pi_Remote
+   - make
+   - ./bin main.exe
+
+# add www-data to sudo for shutdown command:
+11 - sudo visudo
+   # Add the following line below "pi ALL etc." and exit the visudo editor:
+   www-data ALL = NOPASSWD: /sbin/shutdown
+
+# install Netdata
+12 - sudo curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh -i netdata
+   - cd /usr/src
+   - sudo git clone https://github.com/firehol/netdata.git --depth=1
+   - cd netdata
+   - sudo ./netdata-installer.sh
+   - cd

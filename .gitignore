@@ -1,0 +1,9 @@
+#ignore platform-specific binaries
+cpp_core/bin
+
+#exclude CMake build directories
+cpp_core/build/local
+cpp_core/build/remote
+
+#c++ ipch is a large auto-generated directory
+cpp_core/.vscode/ipch

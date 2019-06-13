@@ -1,0 +1,56 @@
+{
+    "version": "2.0.0",
+    "windows": {
+        "options": {
+            "shell": {
+                "executable": "c:\\windows\\system32\\wsl.exe",
+            }
+        }
+    },
+    "tasks": [
+        {
+            "label": "Build C++ project locally",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": ". build/script/build.sh",
+            "args": [
+            ]
+        },
+        {
+            "label": "Build & run C++ project locally",
+            "type": "shell",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "command": ". build/script/buildRun.sh",
+            "args": [
+            ]
+        },
+        {
+            "label": "Build C++ project remotely",
+            "type": "shell",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "command": ". build/script/buildRemote.sh",
+            "args": [
+            ]
+        },
+        {
+            "label": "Build & run C++ project remotely",
+            "type": "shell",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "command": ". build/script/buildRunRemote.sh",
+            "args": [
+            ]
+        }
+    ]
+}
