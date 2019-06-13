@@ -6,7 +6,7 @@
     - git
     - wiringPi
     - apache
-    - GCC
+    - GCC + G++
 ****************
 
 1 - flash sd with raspbian_stretch_lite
