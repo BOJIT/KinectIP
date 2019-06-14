@@ -17,3 +17,7 @@ target_link_libraries( KinectIP.${CMAKE_SYSTEM_PROCESSOR}.${CMAKE_SYSTEM_NAME} l
 # 3rd party libs
 add_subdirectory( ./libs/Randomize )
 target_link_libraries( KinectIP.${CMAKE_SYSTEM_PROCESSOR}.${CMAKE_SYSTEM_NAME} randomize )
+
+# NDI_Lib
+#find_library(ndi)
+#target_link_libraries( KinectIP.${CMAKE_SYSTEM_PROCESSOR}.${CMAKE_SYSTEM_NAME} ndi )

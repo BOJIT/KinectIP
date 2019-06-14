@@ -16,8 +16,8 @@
                 "isDefault": true
             },
             "command": ". build/script/build.sh",
-            "args": [
-            ]
+            "args": [],
+            "problemMatcher": []
         },
         {
             "label": "Build & run C++ project locally",
@@ -27,8 +27,7 @@
                 "isDefault": true
             },
             "command": ". build/script/buildRun.sh",
-            "args": [
-            ]
+            "args": []
         },
         {
             "label": "Build C++ project remotely",
@@ -38,8 +37,7 @@
                 "isDefault": true
             },
             "command": ". build/script/buildRemote.sh",
-            "args": [
-            ]
+            "args": []
         },
         {
             "label": "Build & run C++ project remotely",
@@ -49,8 +47,7 @@
                 "isDefault": true
             },
             "command": ". build/script/buildRunRemote.sh",
-            "args": [
-            ]
+            "args": []
         }
     ]
 }
