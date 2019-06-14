@@ -1,7 +1,9 @@
+#include <iostream>
 #include <KinectIP/game_interface.h>
 
 int main()
 {
+	std::cout << "hello player" << std::endl;
 	GameInterface g(5);
 	g.play(0);
 	g.play(1);
