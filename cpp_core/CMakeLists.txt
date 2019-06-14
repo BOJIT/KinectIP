@@ -19,5 +19,4 @@ add_subdirectory( ./libs/Randomize )
 target_link_libraries( KinectIP.${CMAKE_SYSTEM_PROCESSOR}.${CMAKE_SYSTEM_NAME} randomize )
 
 # NDI_Lib
-#find_library(ndi)
-#target_link_libraries( KinectIP.${CMAKE_SYSTEM_PROCESSOR}.${CMAKE_SYSTEM_NAME} ndi )
+target_link_libraries( KinectIP.${CMAKE_SYSTEM_PROCESSOR}.${CMAKE_SYSTEM_NAME} ndi )
