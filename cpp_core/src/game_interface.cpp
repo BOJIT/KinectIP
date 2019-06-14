@@ -1,5 +1,5 @@
 #include <game_engine.h>
-#include <CMake_Learning/game_interface.h>
+#include <KinectIP/game_interface.h>
 
 void GameInterface::play(int num)
 {

@@ -1,4 +1,4 @@
-#include <CMake_Learning/game_interface.h>
+#include <KinectIP/game_interface.h>
 
 int main()
 {
