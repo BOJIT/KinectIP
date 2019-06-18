@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 	}
 	else
 	{
-		printf("NDI works just fine:)");
+		printf("NDI works just fine on Rock64:)");
 	}
 	
 }
