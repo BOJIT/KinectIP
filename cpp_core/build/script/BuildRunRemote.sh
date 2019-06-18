@@ -1,6 +1,6 @@
 #!/bin/bash
 #cd $PWD/build/local/
-sudo mount -t drvfs Z: /mnt/rock64
+mount -t drvfs Z: /mnt/rock64
 cd ./build/remote
 cmake -DCMAKE_TOOLCHAIN_FILE=../../aarch64.cmake ../../
 make
@@ -12,4 +12,4 @@ cd ../..
 echo "-----------PROGRAM-----------"
 ssh rock64@192.168.1.150 './KinectIP.aarch64.Linux'
 exit
-sudo umount /mnt/rock64
+umount /mnt/rock64

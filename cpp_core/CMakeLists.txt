@@ -11,7 +11,7 @@ include_directories( ./include ./src ./libs/Logger/include ./libs/Randomize/incl
 
 # link files
 link_directories( /usr/local/lib/NDI )
-link_directories( /opt/rock64_sysroot/usr/local/lib/NDI )
+ link_directories( /mnt/rock64/usr/local/lib/NDI )
 
 # target
 add_executable( ${CMAKE_PROJECT_NAME}.${CMAKE_SYSTEM_PROCESSOR}.${CMAKE_SYSTEM_NAME} ./src/main.cpp ./src/game_engine.cpp ./src/game_interface.cpp )

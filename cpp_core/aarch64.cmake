@@ -10,11 +10,11 @@ SET(CMAKE_SYSTEM_PROCESSOR aarch64)
 SET(CMAKE_C_COMPILER   /usr/bin/aarch64-linux-gnu-gcc)
 SET(CMAKE_CXX_COMPILER /usr/bin/aarch64-linux-gnu-g++)
 
-#set(CMAKE_CXX_FLAGS "... --sysroot=/opt/rock64_sysroot/ ")
-#set(CMAKE_CXX_LINK_FLAGS "... --sysroot=/opt/rock64_sysroot/ ")
+#set(CMAKE_CXX_FLAGS "... --sysroot=/mnt/rock64/ ")
+#set(CMAKE_CXX_LINK_FLAGS "... --sysroot=/mnt/rock64/ ")
 
 # where is the target environment
-SET(CMAKE_FIND_ROOT_PATH /opt/rock64_sysroot)
+SET(CMAKE_FIND_ROOT_PATH /mnt/rock64 )
 
 # search for programs in the build host directories
 SET(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
