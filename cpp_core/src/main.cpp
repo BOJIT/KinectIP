@@ -15,4 +15,9 @@ int main(int argc, char* argv[])
 		printf("Cannot run NDI.");
 		return 0;
 	}
+	else
+	{
+		printf("ndi works just fine:)");
+	}
+	
 }
