@@ -81,7 +81,7 @@ bool loadTestPatterns() {
 
 	}
 	// Lets measure the performance for one minute
-	printf("Transmission Complete");
+	printf("Transmission Complete \n");
 	std::this_thread::sleep_until(std::chrono::high_resolution_clock::now() + std::chrono::seconds(30));
 
 	// Destroy the NDI sender
