@@ -8,8 +8,17 @@
 #include <NDI/Processing.NDI.Lib.h>
 #include <PicoPNG/picopng.hpp>
 
+#include <libfreenect2/libfreenect2.hpp>
+#include <libfreenect2/frame_listener_impl.h>
+#include <libfreenect2/registration.h>
+#include <libfreenect2/packet_pipeline.h>
+#include <libfreenect2/logger.h>
+
 int main(int argc, char* argv[])
 {	// Not required, but "correct" (see the SDK documentation)
+	
+	testKinect();
+
 	std::cout << "NDI Test Patterns" << std::endl;
 	if (!NDIlib_initialize())
 	{	// Cannot run NDI. Most likely because the CPU is not sufficient (see SDK documentation).
@@ -91,5 +100,23 @@ bool loadTestPatterns() {
 
 	// Not required, but nice
 	NDIlib_destroy();
+	return true;
+}
+
+bool testKinect() {
+
+	/*libfreenect2::Freenect2 freenect2;
+	libfreenect2::Freenect2Device *dev = 0;
+	libfreenect2::PacketPipeline *pipeline = 0;*/
+
+	if(freenect2.enumerateDevices() == 0)
+  {
+    std::cout << "no device connected!" << std::endl;
+    return -1;
+  }
+  if (serial == "")
+  {
+    serial = freenect2.getDefaultDeviceSerialNumber();
+  }
 	return true;
 }

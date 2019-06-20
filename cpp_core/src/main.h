@@ -3,4 +3,6 @@
 
   bool loadTestPatterns();
 
+  bool testKinect();
+
 #endif
