@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <chrono>
 #include <thread>
+#include <signal.h>
 
 #include "main.h"
 #include <NDI/Processing.NDI.Lib.h>
@@ -19,7 +20,7 @@ int main(int argc, char* argv[])
 	
 	testKinect();
 
-	std::cout << "NDI Test Patterns" << std::endl;
+	std::cout << "NDI Test Patterns:" << std::endl;
 	if (!NDIlib_initialize())
 	{	// Cannot run NDI. Most likely because the CPU is not sufficient (see SDK documentation).
 		// you can check this directly with a call to NDIlib_is_supported_CPU()
@@ -105,9 +106,9 @@ bool loadTestPatterns() {
 
 bool testKinect() {
 
-	/*libfreenect2::Freenect2 freenect2;
+	/* libfreenect2::Freenect2 freenect2;
 	libfreenect2::Freenect2Device *dev = 0;
-	libfreenect2::PacketPipeline *pipeline = 0;*/
+	libfreenect2::PacketPipeline *pipeline = 0;
 
 	if(freenect2.enumerateDevices() == 0)
   {
@@ -117,6 +118,6 @@ bool testKinect() {
   if (serial == "")
   {
     serial = freenect2.getDefaultDeviceSerialNumber();
-  }
+  }*/
 	return true;
 }
