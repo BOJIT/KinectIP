@@ -106,7 +106,7 @@ bool loadTestPatterns() {
 
 bool testKinect() {
 
-	/* libfreenect2::Freenect2 freenect2;
+	libfreenect2::Freenect2 freenect2;
 	libfreenect2::Freenect2Device *dev = 0;
 	libfreenect2::PacketPipeline *pipeline = 0;
 
@@ -115,7 +115,7 @@ bool testKinect() {
     std::cout << "no device connected!" << std::endl;
     return -1;
   }
-  if (serial == "")
+  /* if (serial == "")
   {
     serial = freenect2.getDefaultDeviceSerialNumber();
   }*/
