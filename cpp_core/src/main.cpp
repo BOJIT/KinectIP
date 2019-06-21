@@ -1,19 +1,5 @@
-#include <iostream>
-#include <string>
-#include <stdlib.h>
-#include <chrono>
-#include <thread>
-#include <signal.h>
 
 #include "main.h"
-#include <NDI/Processing.NDI.Lib.h>
-#include <PicoPNG/picopng.hpp>
-
-#include <libfreenect2/libfreenect2.hpp>
-#include <libfreenect2/frame_listener_impl.h>
-#include <libfreenect2/registration.h>
-#include <libfreenect2/packet_pipeline.h>
-#include <libfreenect2/logger.h>
 
 int main(int argc, char* argv[])
 {	// Not required, but "correct" (see the SDK documentation)
@@ -36,7 +22,10 @@ int main(int argc, char* argv[])
   }*/
 	
 	//////////////////////////////////
-	Kinect_Discover();
+	if (Kinect_Discover() == -1) {
+		printf("Cannot find Kinect \n");
+		return 0;
+	}
 
 	std::cout << "NDI Test Patterns:" << std::endl;
 	if (!NDIlib_initialize())
@@ -139,9 +128,31 @@ int Kinect_Discover() {
   }
 	if(!pipeline)
 	{
-    pipeline = new libfreenect2::CpuPacketPipeline();
+		#if defined LIBFREENECT2_WITH_OPENGL_SUPPORT && defined HEADLESS_GPU 	// note currently openGL is not utilised, future optimisation
+			pipeline = new libfreenect2::OpenGLPacketPipeline();
+		#else
+    	std::cout << "OpenGL pipeline is not supported in current configuration!" << std::endl;
+			pipeline = new libfreenect2::CpuPacketPipeline();
+		#endif
 	}
-	std::cout << serial << std::endl;
-	std::cout << pipeline << std::endl;
-	return true;
+
+	  if(pipeline)
+  {
+    dev = freenect2.openDevice(serial, pipeline);		// specified pipeline
+  }
+  else
+  {
+    dev = freenect2.openDevice(serial);		// unspecified pipeline
+  }
+
+  if(dev == 0)
+  {
+    std::cout << "failure opening device!" << std::endl;
+    return -1;
+  }
+
+	// current plan is to initialise all streams regardless of whether they
+	// are allocated to an NDI stream (streams can be enabled without re-initialisation)
+
+	return 0;
 }
