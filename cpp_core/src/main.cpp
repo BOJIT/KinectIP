@@ -1,31 +1,47 @@
 
 #include "main.h"
 
+// Signal Handler/Terminal Protection Functions
+bool protonect_shutdown = false; ///< Whether the running application should shut down.
+
+void sigint_handler(int s) {
+  protonect_shutdown = true;
+}
+
+bool protonect_paused = false;
+libfreenect2::Freenect2Device *devtopause;
+
+//Doing non-trivial things in signal handler is bad. If you want to pause,
+//do it in another thread.
+//Though libusb operations are generally thread safe, I cannot guarantee
+//everything above is thread safe when calling start()/stop() while
+//waitForNewFrame().
+void sigusr1_handler(int s) {
+  if (devtopause == 0) {
+		return;
+	}
+	/// [pause]
+  if (protonect_paused) {
+    devtopause->start();
+	}
+  else {
+    devtopause->stop();
+	}
+  protonect_paused = !protonect_paused;
+	/// [pause]
+}
+
 int main(int argc, char* argv[])
 {	// Not required, but "correct" (see the SDK documentation)
 	
 	////////Initialise Kinect/////////
-	/*std::string program_path(argv[0]);
-  std::cerr << "Version: " << LIBFREENECT2_VERSION << std::endl;
-  std::cerr << "Environment variables: LOGFILE=<protonect.log>" << std::endl;
-  std::cerr << "Usage: " << program_path << " [-gpu=<id>] [gl | cl | clkde | cuda | cudakde | cpu] [<device serial>]" << std::endl;
-  std::cerr << "        [-noviewer] [-norgb | -nodepth] [-help] [-version]" << std::endl;
-  std::cerr << "        [-frames <number of frames to process>]" << std::endl;
-  std::cerr << "To pause and unpause: pkill -USR1 Protonect" << std::endl;
-  size_t executable_name_idx = program_path.rfind("Protonect");
-
-  std::string binpath = "/";
-
-  if(executable_name_idx != std::string::npos)
-  {
-    binpath = program_path.substr(0, executable_name_idx);
-  }*/
-	
-	//////////////////////////////////
-	if (Kinect_Discover() == -1) {
-		printf("Cannot find Kinect \n");
+	if (Kinect_Discover( true,true ) == -1) {
+		printf("Error Initialising Kinect \n");
 		return 0;
 	}
+	////////Test Frames///////////////
+	
+
 
 	std::cout << "NDI Test Patterns:" << std::endl;
 	if (!NDIlib_initialize())
@@ -110,7 +126,9 @@ bool loadTestPatterns() {
 	NDIlib_destroy();
 	return true;
 }
-int Kinect_Discover() {
+
+int Kinect_Discover(bool enable_rgb, bool enable_depth) {
+
 	std::string serial = "";
 
 	libfreenect2::Freenect2 freenect2;
@@ -151,8 +169,50 @@ int Kinect_Discover() {
     return -1;
   }
 
+	devtopause = dev;
+
+  signal(SIGINT,sigint_handler);
+		#ifdef SIGUSR1
+  		signal(SIGUSR1, sigusr1_handler);
+	#endif
+  protonect_shutdown = false;
+
+	/// [listeners]
+  int types = 0;
+  if (enable_rgb)
+    types |= libfreenect2::Frame::Color;
+  if (enable_depth)
+    types |= libfreenect2::Frame::Ir | libfreenect2::Frame::Depth;
+  libfreenect2::SyncMultiFrameListener listener(types);
+  libfreenect2::FrameMap frames;
+
+  dev->setColorFrameListener(&listener);
+  dev->setIrAndDepthFrameListener(&listener);
+	/// [listeners]
+
 	// current plan is to initialise all streams regardless of whether they
 	// are allocated to an NDI stream (streams can be enabled without re-initialisation)
+
+	/// [start]
+  if (enable_rgb && enable_depth)
+  {
+    if (!dev->start())
+      return -1;
+  }
+  else
+  {
+    if (!dev->startStreams(enable_rgb, enable_depth))
+      return -1;
+  }
+
+  std::cout << "device serial: " << dev->getSerialNumber() << std::endl;
+  std::cout << "device firmware: " << dev->getFirmwareVersion() << std::endl;
+	/// [start]
+
+	/// [registration setup]
+  libfreenect2::Registration* registration = new libfreenect2::Registration(dev->getIrCameraParams(), dev->getColorCameraParams());
+  libfreenect2::Frame undistorted(512, 424, 4), registered(512, 424, 4);
+	/// [registration setup]
 
 	return 0;
 }

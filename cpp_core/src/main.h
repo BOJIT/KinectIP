@@ -21,7 +21,7 @@
 
   bool loadTestPatterns();
 
-  int Kinect_Discover();
+  int Kinect_Discover(bool enable_rgb, bool enable_depth);
 
   /*struct Dev_Config
   {
