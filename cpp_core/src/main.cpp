@@ -18,7 +18,25 @@
 int main(int argc, char* argv[])
 {	// Not required, but "correct" (see the SDK documentation)
 	
-	testKinect();
+	////////Initialise Kinect/////////
+	/*std::string program_path(argv[0]);
+  std::cerr << "Version: " << LIBFREENECT2_VERSION << std::endl;
+  std::cerr << "Environment variables: LOGFILE=<protonect.log>" << std::endl;
+  std::cerr << "Usage: " << program_path << " [-gpu=<id>] [gl | cl | clkde | cuda | cudakde | cpu] [<device serial>]" << std::endl;
+  std::cerr << "        [-noviewer] [-norgb | -nodepth] [-help] [-version]" << std::endl;
+  std::cerr << "        [-frames <number of frames to process>]" << std::endl;
+  std::cerr << "To pause and unpause: pkill -USR1 Protonect" << std::endl;
+  size_t executable_name_idx = program_path.rfind("Protonect");
+
+  std::string binpath = "/";
+
+  if(executable_name_idx != std::string::npos)
+  {
+    binpath = program_path.substr(0, executable_name_idx);
+  }*/
+	
+	//////////////////////////////////
+	Kinect_Discover();
 
 	std::cout << "NDI Test Patterns:" << std::endl;
 	if (!NDIlib_initialize())
@@ -103,8 +121,8 @@ bool loadTestPatterns() {
 	NDIlib_destroy();
 	return true;
 }
-
-bool testKinect() {
+int Kinect_Discover() {
+	std::string serial = "";
 
 	libfreenect2::Freenect2 freenect2;
 	libfreenect2::Freenect2Device *dev = 0;
@@ -115,9 +133,15 @@ bool testKinect() {
     std::cout << "no device connected!" << std::endl;
     return -1;
   }
-  /* if (serial == "")
+  if (serial == "")
   {
     serial = freenect2.getDefaultDeviceSerialNumber();
-  }*/
+  }
+	if(!pipeline)
+	{
+    pipeline = new libfreenect2::CpuPacketPipeline();
+	}
+	std::cout << serial << std::endl;
+	std::cout << pipeline << std::endl;
 	return true;
 }
