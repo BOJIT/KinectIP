@@ -1,6 +1,12 @@
 
 #include "main.h"
 
+// output vectors (GLOBAL):
+std::vector<unsigned char> rgb_data;
+std::vector<unsigned char> ir_data;
+std::vector<unsigned char> depth_data;
+
+
 // Signal Handler/Terminal Protection Functions
 bool protonect_shutdown = false; ///< Whether the running application should shut down.
 
@@ -34,16 +40,18 @@ void sigusr1_handler(int s) {
 int main(int argc, char* argv[])
 {	// Not required, but "correct" (see the SDK documentation)
 	
+	//////////////CONFIG//////////////
+	// disable logging
+	libfreenect2::setGlobalLogger(NULL);
+
 	////////Initialise Kinect/////////
 	if (Kinect_Discover( true,true ) == -1) {
 		printf("Error Initialising Kinect \n");
 		return 0;
 	}
+
 	////////Test Frames///////////////
-	
-
-
-	std::cout << "NDI Test Patterns:" << std::endl;
+		std::cout << "NDI Test Patterns:" << std::endl;
 	if (!NDIlib_initialize())
 	{	// Cannot run NDI. Most likely because the CPU is not sufficient (see SDK documentation).
 		// you can check this directly with a call to NDIlib_is_supported_CPU()
@@ -114,9 +122,9 @@ bool loadTestPatterns() {
 
 	}
 	// Lets measure the performance for one minute
-	printf("Transmission Complete \n");
 	std::this_thread::sleep_until(std::chrono::high_resolution_clock::now() + std::chrono::seconds(30));
-
+	printf("Transmission Complete \n");
+	
 	// Destroy the NDI sender
 	for(int i=0; i<4; i++) {
 		NDIlib_send_destroy(sender[i]);
@@ -214,5 +222,28 @@ int Kinect_Discover(bool enable_rgb, bool enable_depth) {
   libfreenect2::Frame undistorted(512, 424, 4), registered(512, 424, 4);
 	/// [registration setup]
 
+
+	// frame capture test
+
+	if (!listener.waitForNewFrame(frames, 10*1000)) // 10 sconds
+  {
+    std::cout << "timeout!" << std::endl;
+    return -1;
+  }
+  libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
+	cast_Vector();
+	printf("%zu\n",rgb->data);
+  libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
+  libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
+
+	listener.release(frames);
+
+	dev->stop();
+  dev->close();
+
 	return 0;
+}
+
+int cast_Vector() {
+
 }

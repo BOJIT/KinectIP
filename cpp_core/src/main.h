@@ -23,6 +23,8 @@
 
   int Kinect_Discover(bool enable_rgb, bool enable_depth);
 
+  int cast_Vector();
+
   /*struct Dev_Config
   {
      const std::string dev_serial;
