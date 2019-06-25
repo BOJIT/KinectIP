@@ -1,4 +1,3 @@
-
 #include "main.h"
 
 // output vectors (GLOBAL):
