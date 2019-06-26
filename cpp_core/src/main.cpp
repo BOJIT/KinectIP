@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 	
 	//////////////CONFIG//////////////
 	// disable logging
-	libfreenect2::setGlobalLogger(NULL);
+	//libfreenect2::setGlobalLogger(NULL);
 
 	////////Initialise Kinect/////////
 	if (Kinect_Discover( true,true ) == -1) {
@@ -230,15 +230,50 @@ int Kinect_Discover(bool enable_rgb, bool enable_depth) {
     return -1;
   }
   libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
-	cast_Vector();
+	//cast_Vector();
 	printf("%zu\n",rgb->data);
-  libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
-  libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
+  //libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
+  //libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
+
+//testing
+	// Create an NDI source that is clocked to the video.
+		NDIlib_send_create_t NDI_send_create_desc;
+		NDI_send_create_desc.p_ndi_name = "test";
+
+		// We create the NDI sender
+		NDIlib_send_instance_t pNDI_send = NDIlib_send_create(&NDI_send_create_desc);
+		if (!pNDI_send) {
+			printf("Cannot Create NDI Sender \n");
+			return false;
+		}
+
+		// We are going to create a frame
+		NDIlib_video_frame_v2_t NDI_video_frame;
+		NDI_video_frame.xres = rgb->width;
+		NDI_video_frame.yres = rgb->height;
+		NDI_video_frame.frame_rate_N = 30000;
+		NDI_video_frame.frame_rate_D = 1001;
+		NDI_video_frame.FourCC = NDIlib_FourCC_type_RGBA;
+		NDI_video_frame.p_data = rgb->data;
+		NDI_video_frame.line_stride_in_bytes = rgb->width * 4;
+		NDI_video_frame.frame_format_type = NDIlib_frame_format_type_progressive;
+
+		// We now submit the frame. Note that this call will be clocked so that we end up submitting at exactly 29.97fps.
+		NDIlib_send_send_video_v2(pNDI_send, &NDI_video_frame);
 
 	listener.release(frames);
 
 	dev->stop();
   dev->close();
+
+
+	// Lets measure the performance for one minute
+	printf("Transmission Initialised \n");
+	std::this_thread::sleep_until(std::chrono::high_resolution_clock::now() + std::chrono::seconds(30));
+	printf("Transmission Complete \n");
+	
+	// Destroy the NDI sender
+	NDIlib_send_destroy(pNDI_send);
 
 	return 0;
 }
