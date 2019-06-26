@@ -4,7 +4,8 @@
   //#define HEADLESS_GPU
 
   #include <iostream>
-  #include <string>
+  //#include <string>
+  #include <cstring>
   #include <stdlib.h>
   #include <chrono>
   #include <thread>

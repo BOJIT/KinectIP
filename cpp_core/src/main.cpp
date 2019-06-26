@@ -230,48 +230,96 @@ int Kinect_Discover(bool enable_rgb, bool enable_depth) {
     return -1;
   }
   libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
-  //libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
-  //libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
+  libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
+  libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
 
-//testing
+
 	// Create an NDI source that is clocked to the video.
-		NDIlib_send_create_t NDI_send_create_desc;
-		NDI_send_create_desc.p_ndi_name = "test";
+	NDIlib_send_create_t NDI_send_create_desc;
+	NDI_send_create_desc.p_ndi_name = "test";
 
-		// We create the NDI sender
-		NDIlib_send_instance_t pNDI_send = NDIlib_send_create(&NDI_send_create_desc);
-		if (!pNDI_send) {
-			printf("Cannot Create NDI Sender \n");
-			return false;
+	// We create the NDI sender
+	NDIlib_send_instance_t pNDI_send = NDIlib_send_create(&NDI_send_create_desc);
+	if (!pNDI_send) {
+		printf("Cannot Create NDI Sender \n");
+		return false;
+	}
+
+	// We are going to create a frame
+	NDIlib_video_frame_v2_t NDI_video_frame;
+	NDI_video_frame.xres = rgb->width;
+	NDI_video_frame.yres = rgb->height;
+	NDI_video_frame.frame_rate_N = 30000;
+	NDI_video_frame.frame_rate_D = 1001;
+	NDI_video_frame.FourCC = NDIlib_FourCC_type_BGRX;
+	NDI_video_frame.p_data = rgb->data;
+	NDI_video_frame.line_stride_in_bytes = rgb->width * 4;
+	NDI_video_frame.frame_format_type = NDIlib_frame_format_type_progressive;
+
+	// We now submit the frame. Note that this call will be clocked so that we end up submitting at exactly 29.97fps.
+	NDIlib_send_send_video_v2(pNDI_send, &NDI_video_frame);
+
+	/* // We create the NDI sender
+	libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
+	libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
+	libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
+
+	NDIlib_send_create_t NDI_send_create_desc;
+	NDI_send_create_desc.p_ndi_name = "test";
+
+	NDIlib_send_instance_t pNDI_send = NDIlib_send_create(&NDI_send_create_desc);
+	if (!pNDI_send) return 0;
+
+	// We are going to create a 1920x1080 interlaced frame at 29.97Hz.
+	NDIlib_video_frame_v2_t NDI_video_frame;
+	NDI_video_frame.xres = 1920;
+	NDI_video_frame.yres = 1080;
+	NDI_video_frame.frame_rate_N = 30000;
+	NDI_video_frame.frame_rate_D = 1001;
+	NDI_video_frame.FourCC = NDIlib_FourCC_type_BGRX;
+	NDI_video_frame.p_data = rgb->data;
+
+	size_t framemax = -1;
+	size_t framecount = 0;
+
+	// Run for one minute
+	using namespace std::chrono;
+	for (const auto start = high_resolution_clock::now(); high_resolution_clock::now() - start < seconds(30);)
+	{	// Get the current time
+		const auto start_send = high_resolution_clock::now();
+
+	// Send 200 frames
+	for (int idx = 200; idx; idx--) {	
+		while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
+  	{
+		if (!listener.waitForNewFrame(frames, 10*1000)) // 10 sconds
+		{
+			std::cout << "timeout!" << std::endl;
+			return -1;
 		}
-
-		// We are going to create a frame
-		NDIlib_video_frame_v2_t NDI_video_frame;
-		NDI_video_frame.xres = rgb->width;
-		NDI_video_frame.yres = rgb->height;
-		NDI_video_frame.frame_rate_N = 30000;
-		NDI_video_frame.frame_rate_D = 1001;
-		NDI_video_frame.FourCC = NDIlib_FourCC_type_BGRX;
-		NDI_video_frame.p_data = rgb->data;
-		NDI_video_frame.line_stride_in_bytes = rgb->width * 4;
-		NDI_video_frame.frame_format_type = NDIlib_frame_format_type_progressive;
-
+		libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
+		libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
+		libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
+		//memset((void*)NDI_video_frame.p_data, (idx & 1) ? 255 : 0, NDI_video_frame.xres*NDI_video_frame.yres * 4);
+		//NDI_video_frame.p_data = rgb->data;
 		// We now submit the frame. Note that this call will be clocked so that we end up submitting at exactly 29.97fps.
 		NDIlib_send_send_video_v2(pNDI_send, &NDI_video_frame);
+		
+		}
+
+		// Just display something helpful
+		printf("200 frames sent, at %1.2ffps\n", 200.0f / duration_cast<duration<float>>(high_resolution_clock::now() - start_send).count());
+	}
+
+	// Free the video frame
+	free(NDI_video_frame.p_data);
+
+	}*/
 
 	listener.release(frames);
 
 	dev->stop();
   dev->close();
-
-
-	// Lets measure the performance for one minute
-	printf("Transmission Initialised \n");
-	std::this_thread::sleep_until(std::chrono::high_resolution_clock::now() + std::chrono::seconds(30));
-	printf("Transmission Complete \n");
-	
-	// Destroy the NDI sender
-	NDIlib_send_destroy(pNDI_send);
 
 	return 0;
 }
