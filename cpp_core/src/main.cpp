@@ -230,8 +230,6 @@ int Kinect_Discover(bool enable_rgb, bool enable_depth) {
     return -1;
   }
   libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
-	//cast_Vector();
-	printf("%zu\n",rgb->data);
   //libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
   //libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
 
@@ -253,7 +251,7 @@ int Kinect_Discover(bool enable_rgb, bool enable_depth) {
 		NDI_video_frame.yres = rgb->height;
 		NDI_video_frame.frame_rate_N = 30000;
 		NDI_video_frame.frame_rate_D = 1001;
-		NDI_video_frame.FourCC = NDIlib_FourCC_type_RGBA;
+		NDI_video_frame.FourCC = NDIlib_FourCC_type_BGRX;
 		NDI_video_frame.p_data = rgb->data;
 		NDI_video_frame.line_stride_in_bytes = rgb->width * 4;
 		NDI_video_frame.frame_format_type = NDIlib_frame_format_type_progressive;
@@ -276,8 +274,4 @@ int Kinect_Discover(bool enable_rgb, bool enable_depth) {
 	NDIlib_send_destroy(pNDI_send);
 
 	return 0;
-}
-
-int cast_Vector() {
-
 }
