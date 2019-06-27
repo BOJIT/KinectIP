@@ -27,4 +27,6 @@
 
   std::string parseLine(uint8_t line);  // read line from config file
 
+  NDIlib_video_frame_v2_t createFrame(const char stream_name[], bool testImg);
+
 #endif

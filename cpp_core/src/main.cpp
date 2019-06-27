@@ -128,22 +128,77 @@
 		}
 
 		// We are going to create a frame
-		NDIlib_video_frame_v2_t NDI_video_frame;
+		NDIlib_video_frame_v2_t NDI_video_frame = createFrame(stream_name, false);
 		NDI_video_frame.xres = xres;
 		NDI_video_frame.yres = yres;
-		NDI_video_frame.frame_rate_N = 30000;
-		NDI_video_frame.frame_rate_D = 1001;
 		NDI_video_frame.FourCC = NDIlib_FourCC_type_RGBA;
 		NDI_video_frame.p_data = &image_data[0];
 		NDI_video_frame.line_stride_in_bytes = xres * 4;
-		NDI_video_frame.frame_format_type = NDIlib_frame_format_type_progressive;
-
-		// We now submit the first frame. Note that this call will be clocked so that we end up submitting at exactly 29.97fps.
+		
+		// We now submit the first frame. Note that this call will be clocked so that we end up submitting at the desired framerate.
 		NDIlib_send_send_video_v2(pNDI_send, &NDI_video_frame);		// this is the test pattern until the kinect is initialised
 
 		return pNDI_send;		// return stream instance for future referencing
 	}
 
+	NDIlib_video_frame_v2_t createFrame(const char stream_name[], bool testImg) {
+		NDIlib_video_frame_v2_t NDI_video_frame;
+		// sets config file lines to read
+		int index = 0;
+		if( !strcmp( stream_name, "Colour" )) {
+			index = 0;
+		}
+		else if( !strcmp( stream_name, "Depth" )) {
+			index = 1;
+		}
+		else if( !strcmp( stream_name, "Index" )) {
+			index = 2;
+		}
+		else if( !strcmp( stream_name, "Infrared" )) {
+			index = 3;
+		}
+
+		// set framerate
+		if(parseLine(index + 11) == "24p") {
+			NDI_video_frame.frame_rate_N = 24000;
+			NDI_video_frame.frame_rate_D = 1001;
+			NDI_video_frame.frame_format_type = NDIlib_frame_format_type_progressive;
+		}
+		else if(parseLine(index + 11) == "25p") {
+			NDI_video_frame.frame_rate_N = 25;
+			NDI_video_frame.frame_rate_D = 1;
+			NDI_video_frame.frame_format_type = NDIlib_frame_format_type_progressive;
+		}
+		else if(parseLine(index + 11) == "29.97p") {
+			NDI_video_frame.frame_rate_N = 30000;
+			NDI_video_frame.frame_rate_D = 1001;
+			NDI_video_frame.frame_format_type = NDIlib_frame_format_type_progressive;
+		}
+		else if(parseLine(index + 11) == "50i") {
+			NDI_video_frame.frame_rate_N = 25;
+			NDI_video_frame.frame_rate_D = 1;
+			NDI_video_frame.frame_format_type = NDIlib_frame_format_type_interleaved;
+		}
+		else if(parseLine(index + 11) == "60i") {
+			NDI_video_frame.frame_rate_N = 30000;
+			NDI_video_frame.frame_rate_D = 1001;
+			NDI_video_frame.frame_format_type = NDIlib_frame_format_type_interleaved;
+		}
+		else {		// default frame settings
+			NDI_video_frame.frame_rate_N = 30000;
+			NDI_video_frame.frame_rate_D = 1001;
+			NDI_video_frame.frame_format_type = NDIlib_frame_format_type_progressive;
+		}
+		
+		// set image colour format
+		if(testImg == true) {
+			NDI_video_frame.FourCC = NDIlib_FourCC_type_RGBA;
+		}
+		else {
+			NDI_video_frame.FourCC = NDIlib_FourCC_type_BGRX;
+		}
+		return NDI_video_frame;
+	}
 //**************END***************//
 
 //********KINECT FUNCTIONS********//
@@ -347,14 +402,13 @@
 			std::string raw_string;
 			for(int i=0; i<line + 1; i++) {
 				getline(configFile, raw_string);
-				if(raw_string.c_str() == "") break;		// prevents problems if line count exceeds file length
 			}
 
 			std::size_t pos = raw_string.find("=");
 			parameter = raw_string.substr (pos + 1);
 		}
     configFile.close();
-		
+
 		return parameter.c_str();
 	}
 //**************END***************//
