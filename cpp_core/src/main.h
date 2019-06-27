@@ -23,7 +23,7 @@
 
   NDIlib_send_instance_t loadStreams(const char stream_name[]);   // loads NDI streams and fills in test images
 
-  int Kinect_Discover(bool enable_rgb, bool enable_depth);  // connect and configure Kinect
+  int Kinect_Config();  // connect and configure Kinect
 
   std::string parseLine(uint8_t line);  // read line from config file
 

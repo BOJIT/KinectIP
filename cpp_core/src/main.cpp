@@ -2,13 +2,18 @@
 
 //**********PREPROCESSOR**********//
 	//#define hideLogs
+	#define enable_rgb
+	#define enable_depth
 //**************END***************//
 
 //************GLOBALS*************//
-	std::vector<unsigned char> rgb_data;
+	/*std::vector<unsigned char> rgb_data;
 	std::vector<unsigned char> depth_data;
 	std::vector<unsigned char> index_data;
-	std::vector<unsigned char> ir_data;
+	std::vector<unsigned char> ir_data;*/
+	libfreenect2::Freenect2 freenect2;
+	libfreenect2::Freenect2Device *dev = 0;
+	libfreenect2::PacketPipeline *pipeline = 0;
 //**************END***************//
 
 //*********SIGNAL HANDLERS********//
@@ -49,8 +54,9 @@
 		#ifdef hideLogs
 			libfreenect2::setGlobalLogger(NULL);
 		#endif
-		////////Initialise Kinect/////////
-		/*if (Kinect_Discover( true,true ) == -1) {
+		
+		// initialise Kinect
+		/* if (Kinect_Config() == -1) {
 			printf("Error Initialising Kinect \n");
 			return 0;
 		}*/
@@ -77,7 +83,7 @@
 		}
 		std::cout << "Streams Initialised" << std::endl;
 
-		// Lets measure the performance for one minute
+		// IDLE Pause, for debugging only: final script loops indefinitely
 		std::this_thread::sleep_until(std::chrono::high_resolution_clock::now() + std::chrono::seconds(30));
 		printf("Transmission Complete \n");
 		
@@ -88,7 +94,9 @@
 			}	
 		}
 
-		// Not required, but nice
+		// safely stop application-specific processes
+		dev->stop();
+		dev->close();
 		NDIlib_destroy();
 		return 0;
 	}
@@ -128,11 +136,10 @@
 		}
 
 		// We are going to create a frame
-		NDIlib_video_frame_v2_t NDI_video_frame = createFrame(stream_name, false);
-		NDI_video_frame.xres = xres;
+		NDIlib_video_frame_v2_t NDI_video_frame = createFrame(stream_name, false);		// createFrame pulls the default framerates 
+		NDI_video_frame.xres = xres;																									// and colour formats from the config files
 		NDI_video_frame.yres = yres;
-		NDI_video_frame.FourCC = NDIlib_FourCC_type_RGBA;
-		NDI_video_frame.p_data = &image_data[0];
+		NDI_video_frame.p_data = &image_data[0];						// pointer to image data
 		NDI_video_frame.line_stride_in_bytes = xres * 4;
 		
 		// We now submit the first frame. Note that this call will be clocked so that we end up submitting at the desired framerate.
@@ -202,13 +209,9 @@
 //**************END***************//
 
 //********KINECT FUNCTIONS********//
-	int Kinect_Discover(bool enable_rgb, bool enable_depth) {
+	int Kinect_Config() {
 
 		std::string serial = "";
-
-		libfreenect2::Freenect2 freenect2;
-		libfreenect2::Freenect2Device *dev = 0;
-		libfreenect2::PacketPipeline *pipeline = 0;
 
 		if(freenect2.enumerateDevices() == 0)
 		{
@@ -247,17 +250,16 @@
 		devtopause = dev;
 
 		signal(SIGINT,sigint_handler);
-			#ifdef SIGUSR1
-				signal(SIGUSR1, sigusr1_handler);
+		#ifdef SIGUSR1
+			signal(SIGUSR1, sigusr1_handler);
 		#endif
 		protonect_shutdown = false;
 
 		/// [listeners]
 		int types = 0;
-		if (enable_rgb)
-			types |= libfreenect2::Frame::Color;
-		if (enable_depth)
-			types |= libfreenect2::Frame::Ir | libfreenect2::Frame::Depth;
+		
+		types |= libfreenect2::Frame::Color | libfreenect2::Frame::Ir | libfreenect2::Frame::Depth;
+
 		libfreenect2::SyncMultiFrameListener listener(types);
 		libfreenect2::FrameMap frames;
 
@@ -265,20 +267,8 @@
 		dev->setIrAndDepthFrameListener(&listener);
 		/// [listeners]
 
-		// current plan is to initialise all streams regardless of whether they
-		// are allocated to an NDI stream (streams can be enabled without re-initialisation)
-
 		/// [start]
-		if (enable_rgb && enable_depth)
-		{
-			if (!dev->start())
-				return -1;
-		}
-		else
-		{
-			if (!dev->startStreams(enable_rgb, enable_depth))
-				return -1;
-		}
+		if (!dev->start()) return -1;
 
 		std::cout << "device serial: " << dev->getSerialNumber() << std::endl;
 		std::cout << "device firmware: " << dev->getFirmwareVersion() << std::endl;
@@ -327,67 +317,12 @@
 		// We now submit the frame. Note that this call will be clocked so that we end up submitting at exactly 29.97fps.
 		NDIlib_send_send_video_v2(pNDI_send, &NDI_video_frame);
 
-		/* // We create the NDI sender
-		libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
-		libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
-		libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
-
-		NDIlib_send_create_t NDI_send_create_desc;
-		NDI_send_create_desc.p_ndi_name = "test";
-
-		NDIlib_send_instance_t pNDI_send = NDIlib_send_create(&NDI_send_create_desc);
-		if (!pNDI_send) return 0;
-
-		// We are going to create a 1920x1080 interlaced frame at 29.97Hz.
-		NDIlib_video_frame_v2_t NDI_video_frame;
-		NDI_video_frame.xres = 1920;
-		NDI_video_frame.yres = 1080;
-		NDI_video_frame.frame_rate_N = 30000;
-		NDI_video_frame.frame_rate_D = 1001;
-		NDI_video_frame.FourCC = NDIlib_FourCC_type_BGRX;
-		NDI_video_frame.p_data = rgb->data;
-
-		size_t framemax = -1;
-		size_t framecount = 0;
-
-		// Run for one minute
-		using namespace std::chrono;
-		for (const auto start = high_resolution_clock::now(); high_resolution_clock::now() - start < seconds(30);)
-		{	// Get the current time
-			const auto start_send = high_resolution_clock::now();
-
-		// Send 200 frames
-		for (int idx = 200; idx; idx--) {	
-			while(!protonect_shutdown && (framemax == (size_t)-1 || framecount < framemax))
-			{
-			if (!listener.waitForNewFrame(frames, 10*1000)) // 10 sconds
-			{
-				std::cout << "timeout!" << std::endl;
-				return -1;
-			}
-			libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
-			libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
-			libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
-			//memset((void*)NDI_video_frame.p_data, (idx & 1) ? 255 : 0, NDI_video_frame.xres*NDI_video_frame.yres * 4);
-			//NDI_video_frame.p_data = rgb->data;
-			// We now submit the frame. Note that this call will be clocked so that we end up submitting at exactly 29.97fps.
-			NDIlib_send_send_video_v2(pNDI_send, &NDI_video_frame);
-			
-			}
-
-			// Just display something helpful
-			printf("200 frames sent, at %1.2ffps\n", 200.0f / duration_cast<duration<float>>(high_resolution_clock::now() - start_send).count());
-		}
-
-		// Free the video frame
-		free(NDI_video_frame.p_data);
-
-		}*/
-
 		listener.release(frames);
 
-		dev->stop();
-		dev->close();
+		std::this_thread::sleep_until(std::chrono::high_resolution_clock::now() + std::chrono::seconds(30));
+		printf("Transmission Complete \n");
+
+		NDIlib_send_destroy(pNDI_send);
 
 		return 0;
 	}
