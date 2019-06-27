@@ -4,12 +4,13 @@
   //#define HEADLESS_GPU
 
   #include <iostream>
-  //#include <string>
   #include <cstring>
+  #include <sstream>
   #include <stdlib.h>
   #include <chrono>
   #include <thread>
   #include <signal.h>
+  #include <fstream>
 
   #include <NDI/Processing.NDI.Lib.h>
   #include <PicoPNG/picopng.hpp>
@@ -20,14 +21,10 @@
   #include <libfreenect2/packet_pipeline.h>
   #include <libfreenect2/logger.h>
 
-  NDIlib_send_instance_t loadStreams(char stream_name[]);
+  NDIlib_send_instance_t loadStreams(const char stream_name[]);   // loads NDI streams and fills in test images
 
-  int Kinect_Discover(bool enable_rgb, bool enable_depth);
+  int Kinect_Discover(bool enable_rgb, bool enable_depth);  // connect and configure Kinect
 
-  /*struct Dev_Config
-  {
-     const std::string dev_serial;
-     libfreenect2::PacketPipeline dev_pipeline;
-  };*/
+  std::string parseLine(uint8_t line);  // read line from config file
 
 #endif

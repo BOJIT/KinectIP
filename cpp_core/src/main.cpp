@@ -1,5 +1,9 @@
 #include "main.h"
 
+//**********PREPROCESSOR**********//
+	//#define hideLogs
+//**************END***************//
+
 //************GLOBALS*************//
 	std::vector<unsigned char> rgb_data;
 	std::vector<unsigned char> depth_data;
@@ -42,10 +46,9 @@
 //**********MAIN PROGRAM**********//
 	int main(int argc, char* argv[])
 	{
-		
-		// disable logging
-		//libfreenect2::setGlobalLogger(NULL);
-
+		#ifdef hideLogs
+			libfreenect2::setGlobalLogger(NULL);
+		#endif
 		////////Initialise Kinect/////////
 		/*if (Kinect_Discover( true,true ) == -1) {
 			printf("Error Initialising Kinect \n");
@@ -59,17 +62,20 @@
 		}
 		
 		NDIlib_send_instance_t sender[4];		// array holds stream instances
-		char source[4][10] = { "Colour", "Depth", "Index", "Infrared"};
+		const char source[4][10] = { "Colour", "Depth", "Index", "Infrared"};
 		for(int i=0; i<4; i++) {
-			if(loadStreams(source[i]) == 0)
+			if(parseLine(i + 4) == "OFF")		// config file lines are zero-referenced
 			{
-				printf("Stream x not required \n");
+				std::cout << source[i] << " stream not required" << std::endl;
+				sender[i] = 0;
 			}
 			else
 			{
+				std::cout << source[i] << " stream required" << std::endl;
 				sender[i] = loadStreams(source[i]);
 			}
 		}
+		std::cout << "Streams Initialised" << std::endl;
 
 		// Lets measure the performance for one minute
 		std::this_thread::sleep_until(std::chrono::high_resolution_clock::now() + std::chrono::seconds(30));
@@ -77,7 +83,9 @@
 		
 		// Destroy the NDI sender
 		for(int i=0; i<4; i++) {
-			NDIlib_send_destroy(sender[i]);
+			if(sender[i] != 0) {
+				NDIlib_send_destroy(sender[i]);
+			}	
 		}
 
 		// Not required, but nice
@@ -88,7 +96,7 @@
 
 //********STREAM FUNCTIONS********//
 
-	NDIlib_send_instance_t loadStreams(char stream_name[]) {
+	NDIlib_send_instance_t loadStreams(const char stream_name[]) {
 		std::string source_name = stream_name;
 		std::string filepath = "./img/NDI_" + source_name + ".png";
 
@@ -331,5 +339,22 @@
 //**************END***************//
 
 //*********FILE FUNCTIONS*********//
+	std::string parseLine(uint8_t line) {
+		std::string parameter;
+		std::ifstream configFile;
+		configFile.open("/var/www/html/config/settings.conf");
+    if (configFile.is_open()) {
+			std::string raw_string;
+			for(int i=0; i<line + 1; i++) {
+				getline(configFile, raw_string);
+				if(raw_string.c_str() == "") break;		// prevents problems if line count exceeds file length
+			}
 
+			std::size_t pos = raw_string.find("=");
+			parameter = raw_string.substr (pos + 1);
+		}
+    configFile.close();
+		
+		return parameter.c_str();
+	}
 //**************END***************//
