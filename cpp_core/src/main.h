@@ -20,7 +20,7 @@
   #include <libfreenect2/packet_pipeline.h>
   #include <libfreenect2/logger.h>
 
-  bool loadTestPatterns();
+  NDIlib_send_instance_t loadStreams(char stream_name[]);
 
   int Kinect_Discover(bool enable_rgb, bool enable_depth);
 
