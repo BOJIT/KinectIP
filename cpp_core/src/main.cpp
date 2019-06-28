@@ -148,8 +148,9 @@
 			*/		
 			// Submit frame. Note that this call will be clocked so that we end up submitting at the desired framerate.
 			NDIlib_send_send_video_v2(sender[1], &NDI_frame);	
-
 			listener.release(frames);
+			printf("flag");
+
 			// ... and ends here!
 			#ifdef debug_Time
 				if(std::chrono::system_clock::now() >= debug_Period + std::chrono::seconds(debug_Time)) break;
