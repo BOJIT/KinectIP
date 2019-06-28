@@ -57,13 +57,54 @@
 		#endif
 		
 		signal(SIGINT, sigint_handler);
+		#ifdef SIGUSR1
+			signal(SIGUSR1, sigusr1_handler);
+		#endif
+		protonect_shutdown = false;
 		
 		// initialise Kinect
-		/* if (Kinect_Config() == -1) {
-			printf("Error Initialising Kinect \n");
+		if (Kinect_Config() == -1) {
+			std::cout << "Error Initialising Kinect" << std::endl;
 			return 0;
-		}*/
+		}
+		
+		/// [listeners]
+		int types = 0;
+		
+		types |= libfreenect2::Frame::Color | libfreenect2::Frame::Ir | libfreenect2::Frame::Depth;
 
+		libfreenect2::SyncMultiFrameListener listener(types);
+		libfreenect2::FrameMap frames;
+
+		dev->setColorFrameListener(&listener);
+		dev->setIrAndDepthFrameListener(&listener);
+		/// [listeners]
+
+		/// [start]
+		if (!dev->start()) return -1;
+
+		std::cout << "device serial: " << dev->getSerialNumber() << std::endl;
+		std::cout << "device firmware: " << dev->getFirmwareVersion() << std::endl;
+		/// [start]
+
+		/// [registration setup]
+		libfreenect2::Registration* registration = new libfreenect2::Registration(dev->getIrCameraParams(), dev->getColorCameraParams());
+		libfreenect2::Frame undistorted(512, 424, 4), registered(512, 424, 4);
+		/// [registration setup]
+
+		// frame capture test
+/*
+		if (!listener.waitForNewFrame(frames, 10*1000)) // 10 sconds
+		{
+			std::cout << "timeout!" << std::endl;
+			return -1;
+		}
+		libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
+		libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
+		libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
+
+		listener.release(frames);
+*/
 		std::cout << "KinectIP:" << std::endl;
 		if (!NDIlib_initialize()) {
 			std::cout << "Cannot Run NDI" << std::endl;	// CPU does not support NDI encoding
@@ -110,8 +151,8 @@
 		}
 
 		// safely stop application-specific processes
-		/*dev->stop();
-		dev->close();*/
+		dev->stop();
+		dev->close();
 		NDIlib_destroy();
 		return 0;
 	}
@@ -225,7 +266,6 @@
 
 //********KINECT FUNCTIONS********//
 	int Kinect_Config() {
-
 		std::string serial = "";
 
 		if(freenect2.enumerateDevices() == 0)
@@ -263,82 +303,6 @@
 		}
 
 		devtopause = dev;
-
-		signal(SIGINT,sigint_handler);
-		#ifdef SIGUSR1
-			signal(SIGUSR1, sigusr1_handler);
-		#endif
-		protonect_shutdown = false;
-
-		/// [listeners]
-		int types = 0;
-		
-		types |= libfreenect2::Frame::Color | libfreenect2::Frame::Ir | libfreenect2::Frame::Depth;
-
-		libfreenect2::SyncMultiFrameListener listener(types);
-		libfreenect2::FrameMap frames;
-
-		dev->setColorFrameListener(&listener);
-		dev->setIrAndDepthFrameListener(&listener);
-		/// [listeners]
-
-		/// [start]
-		if (!dev->start()) return -1;
-
-		std::cout << "device serial: " << dev->getSerialNumber() << std::endl;
-		std::cout << "device firmware: " << dev->getFirmwareVersion() << std::endl;
-		/// [start]
-
-		/// [registration setup]
-		libfreenect2::Registration* registration = new libfreenect2::Registration(dev->getIrCameraParams(), dev->getColorCameraParams());
-		libfreenect2::Frame undistorted(512, 424, 4), registered(512, 424, 4);
-		/// [registration setup]
-
-
-		// frame capture test
-
-		if (!listener.waitForNewFrame(frames, 10*1000)) // 10 sconds
-		{
-			std::cout << "timeout!" << std::endl;
-			return -1;
-		}
-		libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
-		libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
-		libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
-
-
-		// Create an NDI source that is clocked to the video.
-		NDIlib_send_create_t NDI_send_create_desc;
-		NDI_send_create_desc.p_ndi_name = "test";
-
-		// We create the NDI sender
-		NDIlib_send_instance_t pNDI_send = NDIlib_send_create(&NDI_send_create_desc);
-		if (!pNDI_send) {
-			printf("Cannot Create NDI Sender \n");
-			return false;
-		}
-
-		// We are going to create a frame
-		NDIlib_video_frame_v2_t NDI_video_frame;
-		NDI_video_frame.xres = rgb->width;
-		NDI_video_frame.yres = rgb->height;
-		NDI_video_frame.frame_rate_N = 30000;
-		NDI_video_frame.frame_rate_D = 1001;
-		NDI_video_frame.FourCC = NDIlib_FourCC_type_BGRX;
-		NDI_video_frame.p_data = rgb->data;
-		NDI_video_frame.line_stride_in_bytes = rgb->width * 4;
-		NDI_video_frame.frame_format_type = NDIlib_frame_format_type_progressive;
-
-		// We now submit the frame. Note that this call will be clocked so that we end up submitting at exactly 29.97fps.
-		NDIlib_send_send_video_v2(pNDI_send, &NDI_video_frame);
-
-		listener.release(frames);
-
-		std::this_thread::sleep_until(std::chrono::high_resolution_clock::now() + std::chrono::seconds(30));
-		printf("Transmission Complete \n");
-
-		NDIlib_send_destroy(pNDI_send);
-
 		return 0;
 	}
 //**************END***************//
