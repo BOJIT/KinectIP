@@ -134,7 +134,7 @@
 
 		while(protonect_shutdown == false) {
 			// indefinite loop goes here ...
-			printf("flag");
+			/* printf("flag");
 			if (!listener.waitForNewFrame(frames, 10*1000)) // 10 seconds
 			{
 				std::cout << "timeout! Device Not Responding" << std::endl;
@@ -145,7 +145,7 @@
 			//libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
 
 			NDI_frame.p_data = &rgb->data[0];						// pointer to image data
-					
+			*/		
 			// Submit frame. Note that this call will be clocked so that we end up submitting at the desired framerate.
 			NDIlib_send_send_video_v2(sender[1], &NDI_frame);	
 
