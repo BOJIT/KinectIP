@@ -2,6 +2,7 @@
 
 //**********PREPROCESSOR**********//
 	//#define hideLogs
+	#define debug_Time 30
 	#define enable_rgb
 	#define enable_depth
 //**************END***************//
@@ -55,6 +56,8 @@
 			libfreenect2::setGlobalLogger(NULL);
 		#endif
 		
+		signal(SIGINT, sigint_handler);
+		
 		// initialise Kinect
 		/* if (Kinect_Config() == -1) {
 			printf("Error Initialising Kinect \n");
@@ -63,7 +66,7 @@
 
 		std::cout << "KinectIP:" << std::endl;
 		if (!NDIlib_initialize()) {
-			printf("Cannot run NDI. \n");	// CPU does not support NDI encoding
+			std::cout << "Cannot Run NDI" << std::endl;	// CPU does not support NDI encoding
 			return 0;
 		}
 		
@@ -81,13 +84,25 @@
 				sender[i] = loadStreams(source[i]);
 			}
 		}
-		std::cout << "Streams Initialised" << std::endl;
+		std::cout << "--------Streams Initialised--------" << std::endl;
 
-		// IDLE Pause, for debugging only: final script loops indefinitely
-		std::this_thread::sleep_until(std::chrono::high_resolution_clock::now() + std::chrono::seconds(30));
-		printf("Transmission Complete \n");
-		
-		// Destroy the NDI sender
+		// if debugging is enabled, the while loop will break after the specified period
+		#ifdef debug_Time
+			std::chrono::system_clock::time_point debug_Period = std::chrono::system_clock::now();
+		#endif
+
+		while(protonect_shutdown == false) {
+			// indefinite loop goes here ...
+
+			// ... and ends here!
+			#ifdef debug_Time
+				if(std::chrono::system_clock::now() >= debug_Period + std::chrono::seconds(debug_Time)) break;
+			#endif
+		}
+		// Shutdown Routine
+		std::cout << "-------Destroying Senders--------" << std::endl;
+
+		// Destroy all open NDI senders
 		for(int i=0; i<4; i++) {
 			if(sender[i] != 0) {
 				NDIlib_send_destroy(sender[i]);
@@ -95,8 +110,8 @@
 		}
 
 		// safely stop application-specific processes
-		dev->stop();
-		dev->close();
+		/*dev->stop();
+		dev->close();*/
 		NDIlib_destroy();
 		return 0;
 	}
@@ -136,7 +151,7 @@
 		}
 
 		// We are going to create a frame
-		NDIlib_video_frame_v2_t NDI_video_frame = createFrame(stream_name, false);		// createFrame pulls the default framerates 
+		NDIlib_video_frame_v2_t NDI_video_frame = createFrame(stream_name, true);		// createFrame pulls the default framerates 
 		NDI_video_frame.xres = xres;																									// and colour formats from the config files
 		NDI_video_frame.yres = yres;
 		NDI_video_frame.p_data = &image_data[0];						// pointer to image data
