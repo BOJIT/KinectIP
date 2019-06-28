@@ -12,6 +12,7 @@
 	std::vector<unsigned char> depth_data;
 	std::vector<unsigned char> index_data;
 	std::vector<unsigned char> ir_data;*/
+	// Kinect Device Context
 	libfreenect2::Freenect2 freenect2;
 	libfreenect2::Freenect2Device *dev = 0;
 	libfreenect2::PacketPipeline *pipeline = 0;
@@ -92,19 +93,6 @@
 		libfreenect2::Frame undistorted(512, 424, 4), registered(512, 424, 4);
 		/// [registration setup]
 
-		// frame capture test
-/*
-		if (!listener.waitForNewFrame(frames, 10*1000)) // 10 sconds
-		{
-			std::cout << "timeout!" << std::endl;
-			return -1;
-		}
-		libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
-		libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
-		libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
-
-		listener.release(frames);
-*/
 		std::cout << "KinectIP:" << std::endl;
 		if (!NDIlib_initialize()) {
 			std::cout << "Cannot Run NDI" << std::endl;	// CPU does not support NDI encoding
@@ -132,9 +120,36 @@
 			std::chrono::system_clock::time_point debug_Period = std::chrono::system_clock::now();
 		#endif
 
+		NDIlib_video_frame_v2_t NDI_frame = createFrame(source[1], false);			// collect metadata with initial frame
+		if (!listener.waitForNewFrame(frames, 10*1000)) // 10 seconds
+			{
+				std::cout << "timeout! Device Not Responding" << std::endl;
+				return -1;
+			}
+		libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
+		NDI_frame.xres = rgb->width;
+		NDI_frame.yres = rgb->height;
+		NDI_frame.p_data = &rgb->data[0];						// pointer to image data
+		NDI_frame.line_stride_in_bytes = rgb->width * 4;
+
 		while(protonect_shutdown == false) {
 			// indefinite loop goes here ...
+			printf("flag");
+			if (!listener.waitForNewFrame(frames, 10*1000)) // 10 seconds
+			{
+				std::cout << "timeout! Device Not Responding" << std::endl;
+				return -1;
+			}
+			libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
+			//libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
+			//libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
 
+			NDI_frame.p_data = &rgb->data[0];						// pointer to image data
+					
+			// Submit frame. Note that this call will be clocked so that we end up submitting at the desired framerate.
+			NDIlib_send_send_video_v2(sender[1], &NDI_frame);	
+
+			listener.release(frames);
 			// ... and ends here!
 			#ifdef debug_Time
 				if(std::chrono::system_clock::now() >= debug_Period + std::chrono::seconds(debug_Time)) break;
