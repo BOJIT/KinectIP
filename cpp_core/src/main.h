@@ -1,5 +1,5 @@
 #ifndef MAIN
-  #define MAIN 
+  #define MAIN
 
   //#define HEADLESS_GPU
 
