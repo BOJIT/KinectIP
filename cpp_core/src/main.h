@@ -21,7 +21,7 @@
   #include <libfreenect2/packet_pipeline.h>
   #include <libfreenect2/logger.h>
   #include <GPIO/pinout.h>
-  #include <GPIO/gpio.h>
+  #include "gpio.h"
 
   NDIlib_send_instance_t loadStreams(const char stream_name[]);   // loads NDI streams and fills in test images
 

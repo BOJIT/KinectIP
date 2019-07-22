@@ -16,6 +16,8 @@
 	libfreenect2::Freenect2 freenect2;
 	libfreenect2::Freenect2Device *dev = 0;
 	libfreenect2::PacketPipeline *pipeline = 0;
+
+	using namespace Pine64;
 //**************END***************//
 
 //*********SIGNAL HANDLERS********//
@@ -53,6 +55,7 @@
 //**********MAIN PROGRAM**********//
 	int main(int argc, char* argv[])
 	{
+		GPIO* man = new GPIO();
 		#ifdef hideLogs
 			libfreenect2::setGlobalLogger(NULL);
 		#endif
