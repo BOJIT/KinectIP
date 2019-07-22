@@ -37,7 +37,8 @@
                 "isDefault": true
             },
             "command": ". build/script/buildRemote.sh",
-            "args": []
+            "args": [],
+            "problemMatcher": []
         },
         {
             "label": "Build & run C++ project remotely",
