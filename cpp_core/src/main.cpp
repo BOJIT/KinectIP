@@ -61,7 +61,10 @@
 			std::cout << man->setup() << std::endl;
     	std::cout << "Failed to configure GPIO\n" << std::endl;
     return 0;
-  }
+  	}
+		std::cout << "Configured GPIO Successfully\n" << std::endl;
+		return 0;
+
 		#ifdef hideLogs
 			libfreenect2::setGlobalLogger(NULL);
 		#endif
