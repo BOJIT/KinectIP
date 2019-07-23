@@ -54,8 +54,14 @@
 
 //**********MAIN PROGRAM**********//
 	int main(int argc, char* argv[])
-	{
+	{	
+		// Initialise GPIO
 		GPIO* man = new GPIO();
+		if (man->setup()) {
+			std::cout << man->setup() << std::endl;
+    	std::cout << "Failed to configure GPIO\n" << std::endl;
+    return 0;
+  }
 		#ifdef hideLogs
 			libfreenect2::setGlobalLogger(NULL);
 		#endif
