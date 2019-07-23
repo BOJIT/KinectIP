@@ -62,3 +62,6 @@
    - cd netdata
    - sudo ./netdata-installer.sh
    - cd
+
+# permissions of executable are as follows:
+   - -rwsrwxr-- 1 root rock64 139288 Jul 23 11:19 KinectIP.aarch64.Linux

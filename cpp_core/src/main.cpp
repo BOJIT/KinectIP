@@ -57,12 +57,15 @@
 	{	
 		// Initialise GPIO
 		GPIO* man = new GPIO();
+
+		//std::cout << man->setup() << std::endl;
+
 		if (man->setup()) {
-			std::cout << man->setup() << std::endl;
     	std::cout << "Failed to configure GPIO\n" << std::endl;
-    return 0;
   	}
-		std::cout << "Configured GPIO Successfully\n" << std::endl;
+		else {
+			std::cout << "Success!\n" << std::endl;
+		}
 		return 0;
 
 		#ifdef hideLogs

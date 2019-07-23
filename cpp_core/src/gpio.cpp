@@ -39,7 +39,7 @@ GPIO::GPIO() {
     this->_pinea64Found = 1;
 }
 
-GPIO::~GPIO(void){ }
+GPIO::~GPIO(void) {}
 
 int GPIO::setup(void) {
     int mem_fd;
