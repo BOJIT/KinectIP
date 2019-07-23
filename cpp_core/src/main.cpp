@@ -99,12 +99,12 @@
 		std::cout << "device serial: " << dev->getSerialNumber() << std::endl;
 		std::cout << "device firmware: " << dev->getFirmwareVersion() << std::endl;
 		/// [start]
-
+/*
 		/// [registration setup]
 		libfreenect2::Registration* registration = new libfreenect2::Registration(dev->getIrCameraParams(), dev->getColorCameraParams());
 		libfreenect2::Frame undistorted(512, 424, 4), registered(512, 424, 4);
 		/// [registration setup]
-
+*/
 		std::cout << "KinectIP:" << std::endl;
 		if (!NDIlib_initialize()) {
 			std::cout << "Cannot Run NDI" << std::endl;	// CPU does not support NDI encoding
