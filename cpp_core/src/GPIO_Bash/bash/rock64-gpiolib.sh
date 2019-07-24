@@ -114,4 +114,39 @@ function gpio-cleanup {
     fi
 }
 
-echo "Rock64 GPIO library loaded"
+function test {
+    echo $1
+}
+
+echo "Rock64 GPIO library"
+
+case "$1" in
+        gpio-setup)
+                gpio-setup $2 $3 $4 $5
+                echo "GPIO $2 set to $3"
+                ;;
+        gpio-output)
+                gpio-output $2 $3
+                echo "GPIO $2 set $3"
+                ;;
+        gpio-input)
+                gpio-input $2
+                ;;
+        gpio-pwm)
+                gpio-pwm $2 $3 $4 $5
+                ;;
+        gpio-pwm-calc)
+                gpio-pwm-calc $2 $3
+                ;;
+        gpio-pwm-raw)
+                gpio-pwm-raw $2 $3 $4 $5
+                ;;
+        gpio-cleanup)
+                gpio-cleanup $2
+                ;;
+        *)
+                echo "Usage: $0 {gpio-setup|gpio-output|gpio-input|gpio-pwm|gpio-pwm-calc|gpio-pwm-raw|gpio-cleanup}"
+                echo ""
+                echo "Use this shell script to manipulate Rock64 GPIO using /sysfs"
+                ;;
+esac

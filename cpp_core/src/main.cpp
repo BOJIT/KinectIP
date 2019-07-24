@@ -5,6 +5,9 @@
 	#define debug_Time 30
 	#define enable_rgb
 	#define enable_depth
+	#define LED_pin 100
+	#define Switch1 82
+	#define Switch2 83
 //**************END***************//
 
 //************GLOBALS*************//

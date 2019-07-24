@@ -16,7 +16,7 @@ include_directories( ./include ./src )
 #link_directories( /mnt/rock64/lib/aarch64-linux-gnu )
 
 # target
-add_executable( ${CMAKE_PROJECT_NAME}.${CMAKE_SYSTEM_PROCESSOR}.${CMAKE_SYSTEM_NAME} ./src/main.cpp ./src/gpio.cpp )
+add_executable( ${CMAKE_PROJECT_NAME}.${CMAKE_SYSTEM_PROCESSOR}.${CMAKE_SYSTEM_NAME} ./src/main.cpp )
 
 # NDI_Lib
 find_library(NDI NAMES "ndi" PATHS ${CMAKE_FIND_ROOT_PATH}/usr/local/lib/NDI)
