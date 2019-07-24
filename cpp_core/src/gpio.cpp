@@ -1,3 +1,4 @@
+#include <inttypes.h>
 /*
                               PINE 64 - C++ lib                                            1                        
  Copyright (c) 2017 Daniele Contarino <daniele.contatino@studium.unict.it>               i111i                      
@@ -53,7 +54,7 @@ int GPIO::setup(void) {
     int found = 0;
 
     if(!this->_pinea64Found) {
-        // try /dev/gpiomem first - this does not require root privs
+        // try /dev/gpiomem first - this does not require root privs [this returns 0 on Rock64]
         if ((mem_fd = open("/dev/gpiomem", O_RDWR|O_SYNC)) > 0) {
             this->_gpioMap = (uint32_t *)mmap(NULL, BLOCK_SIZE, PROT_READ|PROT_WRITE, MAP_SHARED, mem_fd, 0);
             return ((uint64_t)this->_gpioMap < 0) ? SETUP_MMAP_FAIL : SETUP_OK;
@@ -128,7 +129,7 @@ void GPIO::pinMode(int gpio, int direction, int pud) {
         int bank = GPIO_BANK(gpio); //gpio >> 5
         int index = GPIO_CFG_INDEX(gpio); // (gpio & 0x1F) >> 3
         int offset = GPIO_CFG_OFFSET(gpio); // ((gpio & 0x1F) & 0x7) << 2
-
+        
         sunxiGPIO *pio = &((sunxiGPIOReg *) this->_pioMap)->gpio_bank[bank];
 
         this->_setPullupdn(gpio, pud);
@@ -406,7 +407,7 @@ void GPIO::_setPullupdn(int gpio, int pud) {
 
     sunxiGPIO *pio = &((sunxiGPIOReg *) this->_pioMap)->gpio_bank[bank];
 
-    regval = *(&pio->PULL[0] + index);
+    regval = *(&pio->PULL[0] + index);      // Segmentation Fault
     regval &= ~(3 << offset);
     regval |= pud << offset;
     *(&pio->PULL[0] + index) = regval;
