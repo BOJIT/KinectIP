@@ -74,7 +74,7 @@
 <layer number="102" name="Changes" color="12" fill="1" visible="yes" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.cGVyc29uYWw6dWUyOGRkYTQ5" projecturn="a.cGVyc29uYWw6dWUyOGRkYTQ5IzIwMTkwNzIxMjA0NzU1MDc2" f3durn="urn:adsk.wipprod:dm.lineage:51sdf3HBRlSp9b0qTDdM7A" pcbguid="17f93904-f036-442f-8767-7531df551236" lastpulledtime="2019-07-25T10:40:12Z" lastsyncedchangeguid="8948f89e-b71d-b0ac-b978-ea4a6b5d998c"/>
+<fusionsync huburn="a.cGVyc29uYWw6dWUyOGRkYTQ5" projecturn="a.cGVyc29uYWw6dWUyOGRkYTQ5IzIwMTkwNzIxMjA0NzU1MDc2" f3durn="urn:adsk.wipprod:dm.lineage:51sdf3HBRlSp9b0qTDdM7A" pcbguid="17f93904-f036-442f-8767-7531df551236" lastpulledtime="2019-07-25T10:40:12Z" lastsyncedchangeguid="30b88b88-6244-209e-32c0-b88ed1906c49"/>
 <plain>
 <wire x1="2.54" y1="60.96" x2="0" y2="58.42" width="0.254" layer="20" curve="90"/>
 <wire x1="0" y1="58.42" x2="0" y2="7.62" width="0.254" layer="20"/>
