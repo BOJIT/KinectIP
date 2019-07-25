@@ -74,7 +74,7 @@
 <layer number="102" name="Changes" color="12" fill="1" visible="yes" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.cGVyc29uYWw6dWUyOGRkYTQ5" projecturn="a.cGVyc29uYWw6dWUyOGRkYTQ5IzIwMTkwNzIxMjA0NzU1MDc2" f3durn="urn:adsk.wipprod:dm.lineage:51sdf3HBRlSp9b0qTDdM7A" pcbguid="17f93904-f036-442f-8767-7531df551236" lastpulledtime="2019-07-25T10:40:12Z" lastsyncedchangeguid="30b88b88-6244-209e-32c0-b88ed1906c49"/>
+<fusionsync huburn="a.cGVyc29uYWw6dWUyOGRkYTQ5" projecturn="a.cGVyc29uYWw6dWUyOGRkYTQ5IzIwMTkwNzIxMjA0NzU1MDc2" f3durn="urn:adsk.wipprod:dm.lineage:51sdf3HBRlSp9b0qTDdM7A" pcbguid="17f93904-f036-442f-8767-7531df551236" lastpulledtime="2019-07-25T10:40:12Z" lastsyncedchangeguid="951c594f-2a3f-7381-0e4c-9582c71d1740"/>
 <plain>
 <wire x1="2.54" y1="60.96" x2="0" y2="58.42" width="0.254" layer="20" curve="90"/>
 <wire x1="0" y1="58.42" x2="0" y2="7.62" width="0.254" layer="20"/>
@@ -85,9 +85,9 @@
 <wire x1="62.23" y1="60.96" x2="2.54" y2="60.96" width="0.254" layer="20"/>
 <wire x1="2.54" y1="5.08" x2="10.795" y2="5.08" width="0.1524" layer="20"/>
 <wire x1="10.795" y1="5.08" x2="12.7" y2="3.175" width="0.1524" layer="20" curve="-90"/>
-<wire x1="12.7" y1="3.175" x2="12.7" y2="0.9525" width="0.1524" layer="20"/>
-<wire x1="12.7" y1="0.9525" x2="49.53" y2="0.9525" width="0.1524" layer="20"/>
-<wire x1="49.53" y1="0.9525" x2="49.53" y2="3.175" width="0.1524" layer="20"/>
+<wire x1="12.7" y1="3.175" x2="12.7" y2="1.5875" width="0.1524" layer="20"/>
+<wire x1="12.7" y1="1.5875" x2="49.53" y2="1.5875" width="0.1524" layer="20"/>
+<wire x1="49.53" y1="1.5875" x2="49.53" y2="3.175" width="0.1524" layer="20"/>
 <wire x1="49.53" y1="3.175" x2="51.435" y2="5.08" width="0.1524" layer="20" curve="-90"/>
 <wire x1="51.435" y1="5.08" x2="62.23" y2="5.08" width="0.1524" layer="20"/>
 </plain>
@@ -1500,6 +1500,59 @@ Created by Robert Siegler</description>
 </package3d>
 </packages3d>
 </library>
+<library name="diy-modules" urn="urn:adsk.eagle:library:12361804">
+<description>&lt;b&gt;DIY Modules for Arduino, Raspberry Pi, CubieBoard etc.&lt;/b&gt;
+&lt;br&gt;&lt;br&gt;
+The library contains a list of symbols and footprints for popular, cheap and easy-to-use electronic modules.&lt;br&gt;
+The modules are intend to work with microprocessor-based platforms such as &lt;a href="http://arduino.cc"&gt;Arduino&lt;/a&gt;, &lt;a href="http://raspberrypi.org/"&gt;Raspberry Pi&lt;/a&gt;, &lt;a href="http://cubieboard.org/"&gt;CubieBoard&lt;/a&gt;, &lt;a href="http://beagleboard.org/"&gt;BeagleBone&lt;/a&gt; and many others. There are many manufacturers of the modules in the world. Almost all of them can be bought on &lt;a href="ebay.com"&gt;ebay.com&lt;/a&gt;.&lt;br&gt;
+&lt;br&gt;
+By using this library, you can design a PCB for devices created with usage of modules. Even if you do not need to create PCB design, you can also use the library to quickly document your work by drawing schematics of devices built by you.&lt;br&gt;
+&lt;br&gt;
+The latest version, examples, photos and much more can be found at: &lt;b&gt;&lt;a href="http://diymodules.org/eagle"&gt;diymodules.org/eagle&lt;/a&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailto:eagle@diymodules.org"&gt;eagle@diymodules.org&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;i&gt;Version: 1.8.0 (2017-Jul-02)&lt;/i&gt;&lt;br&gt;
+&lt;i&gt;Created by: Miroslaw Brudnowski&lt;/i&gt;&lt;br&gt;&lt;br&gt;
+&lt;i&gt;Released under the Creative Commons Attribution 4.0 International License: &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;http://creativecommons.org/licenses/by/4.0&lt;/a&gt;&lt;/i&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;center&gt;
+&lt;a href="http://diymodules.org/eagle"&gt;&lt;img src="http://www.diymodules.org/img/diymodules-lbr-image.php?v=1.8.0" alt="DIYmodules.org"&gt;&lt;/a&gt;
+&lt;/center&gt;</description>
+<packages>
+<package name="DC-DC-STEP-DOWN-MP1584" urn="urn:adsk.eagle:footprint:12362022/1" library_version="2">
+<description>&lt;b&gt;DC/DC Step-Down Regulator&lt;/b&gt; based on &lt;b&gt;MP1584&lt;/b&gt; chip</description>
+<wire x1="-11.049" y1="8.382" x2="11.049" y2="8.382" width="0.127" layer="21"/>
+<wire x1="11.049" y1="8.382" x2="11.049" y2="-8.382" width="0.127" layer="21"/>
+<wire x1="11.049" y1="-8.382" x2="-11.049" y2="-8.382" width="0.127" layer="21"/>
+<wire x1="-11.049" y1="-8.382" x2="-11.049" y2="8.382" width="0.127" layer="21"/>
+<wire x1="-6.985" y1="-5.969" x2="-6.985" y2="-4.699" width="0.254" layer="21"/>
+<wire x1="-6.35" y1="5.334" x2="-7.62" y2="5.334" width="0.254" layer="21"/>
+<wire x1="-7.62" y1="-5.334" x2="-6.35" y2="-5.334" width="0.254" layer="21"/>
+<wire x1="6.985" y1="-5.969" x2="6.985" y2="-4.699" width="0.254" layer="21"/>
+<wire x1="7.62" y1="5.334" x2="6.35" y2="5.334" width="0.254" layer="21"/>
+<wire x1="6.35" y1="-5.334" x2="7.62" y2="-5.334" width="0.254" layer="21"/>
+<pad name="IN-.1" x="-9.271" y="6.604" drill="1.2" diameter="2"/>
+<pad name="IN+.2" x="-9.271" y="-6.604" drill="1.2" diameter="2" shape="square"/>
+<pad name="OUT-.1" x="9.271" y="6.604" drill="1.2" diameter="2"/>
+<pad name="IN-.2" x="-9.271" y="4.064" drill="1.2" diameter="2"/>
+<pad name="OUT-.2" x="9.271" y="4.064" drill="1.2" diameter="2"/>
+<pad name="IN+.1" x="-9.271" y="-4.064" drill="1.2" diameter="2" shape="square"/>
+<pad name="OUT+.2" x="9.271" y="-6.604" drill="1.2" diameter="2" shape="square"/>
+<pad name="OUT+.1" x="9.271" y="-4.064" drill="1.2" diameter="2" shape="square"/>
+<text x="0" y="9.525" size="1.27" layer="25" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-9.525" size="1.27" layer="27" align="top-center">&gt;VALUE</text>
+<text x="-9.271" y="0" size="1.524" layer="21" rot="R90" align="center">IN</text>
+<text x="9.271" y="0" size="1.524" layer="21" rot="R90" align="center">OUT</text>
+</package>
+</packages>
+<packages3d>
+<package3d name="DC-DC-STEP-DOWN-MP1584" urn="urn:adsk.eagle:package:12362133/2" type="model" library_version="2">
+<description>&lt;b&gt;DC/DC Step-Down Regulator&lt;/b&gt; based on &lt;b&gt;MP1584&lt;/b&gt; chip</description>
+<packageinstances>
+<packageinstance name="DC-DC-STEP-DOWN-MP1584"/>
+</packageinstances>
+</package3d>
+</packages3d>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -1747,11 +1800,15 @@ design rules under a new name.</description>
 <attribute name="NAME" x="33.7185" y="2.2225" size="1.27" layer="26" ratio="10" rot="MR90"/>
 <attribute name="VALUE" x="27.559" y="1.905" size="1.27" layer="28" ratio="10" rot="MR90"/>
 </element>
-<element name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0805K" package3d_urn="urn:adsk.eagle:package:23681/2" value="" x="-3.4925" y="-14.605" smashed="yes">
-<attribute name="NAME" x="-4.4925" y="-13.73" size="1.016" layer="25"/>
-<attribute name="POPULARITY" value="52" x="-3.4925" y="-14.605" size="1.778" layer="27" display="off"/>
-<attribute name="SPICEPREFIX" value="C" x="-3.4925" y="-14.605" size="1.778" layer="27" display="off"/>
-<attribute name="VALUE" x="-4.4925" y="-16.505" size="1.016" layer="27"/>
+<element name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" package="C0805K" package3d_urn="urn:adsk.eagle:package:23681/2" value="100nF" x="12.3825" y="53.34" smashed="yes">
+<attribute name="NAME" x="11.3825" y="54.215" size="1.016" layer="25"/>
+<attribute name="POPULARITY" value="52" x="12.3825" y="53.34" size="1.778" layer="27" display="off"/>
+<attribute name="SPICEPREFIX" value="C" x="12.3825" y="53.34" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="11.3825" y="51.44" size="1.016" layer="27"/>
+</element>
+<element name="12V-&gt;5V" library="diy-modules" library_urn="urn:adsk.eagle:library:12361804" package="DC-DC-STEP-DOWN-MP1584" package3d_urn="urn:adsk.eagle:package:12362133/2" value="DC-DC-STEP-DOWN-MP1584" x="32.7025" y="31.4325" smashed="yes" rot="MR90">
+<attribute name="NAME" x="42.2275" y="31.4325" size="1.27" layer="26" rot="MR90" align="bottom-center"/>
+<attribute name="VALUE" x="23.1775" y="31.4325" size="1.27" layer="28" rot="MR90" align="top-center"/>
 </element>
 </elements>
 <signals>
@@ -1773,15 +1830,25 @@ design rules under a new name.</description>
 <contactref element="PCB2" pad="P$25"/>
 <contactref element="J1" pad="1"/>
 <contactref element="J1" pad="2"/>
-<wire x1="42.545" y1="11.4275" x2="38.8366" y2="56.3118" width="0" layer="19" extent="1-1"/>
-<wire x1="40.065" y1="6.2425" x2="42.545" y2="11.4275" width="0" layer="19" extent="1-1"/>
-<wire x1="26.9875" y1="6.9825" x2="40.065" y2="6.2425" width="0" layer="19" extent="1-1"/>
-<wire x1="47.565" y1="6.2425" x2="42.545" y2="11.4275" width="0" layer="19" extent="1-1"/>
-<wire x1="22.165" y1="6.2425" x2="26.9875" y2="6.9825" width="0" layer="19" extent="1-1"/>
-<wire x1="17.145" y1="11.4275" x2="22.165" y2="6.2425" width="0" layer="19" extent="1-1"/>
+<contactref element="12V-&gt;5V" pad="IN-.1"/>
+<contactref element="12V-&gt;5V" pad="IN-.2"/>
+<contactref element="12V-&gt;5V" pad="OUT-.1"/>
+<contactref element="12V-&gt;5V" pad="OUT-.2"/>
+<contactref element="C1" pad="2"/>
+<wire x1="13.3825" y1="53.34" x2="38.8366" y2="56.3118" width="0" layer="19" extent="1-1"/>
+<wire x1="5.3975" y1="37.185" x2="13.3825" y2="53.34" width="0" layer="19" extent="1-1"/>
+<wire x1="2.3975" y1="32.385" x2="5.3975" y2="37.185" width="0" layer="19" extent="1-1"/>
+<wire x1="17.145" y1="11.4275" x2="13.3825" y2="53.34" width="0" layer="19" extent="1-1"/>
 <wire x1="14.665" y1="6.2425" x2="17.145" y2="11.4275" width="0" layer="19" extent="1-1"/>
-<wire x1="2.3975" y1="32.385" x2="14.665" y2="6.2425" width="0" layer="19" extent="1-1"/>
-<wire x1="5.3975" y1="37.185" x2="2.3975" y2="32.385" width="0" layer="19" extent="1-1"/>
+<wire x1="22.165" y1="6.2425" x2="17.145" y2="11.4275" width="0" layer="19" extent="1-1"/>
+<wire x1="26.9875" y1="6.9825" x2="22.165" y2="6.2425" width="0" layer="19" extent="1-1"/>
+<wire x1="40.065" y1="6.2425" x2="26.9875" y2="6.9825" width="0" layer="19" extent="1-1"/>
+<wire x1="42.545" y1="11.4275" x2="40.065" y2="6.2425" width="0" layer="19" extent="1-1"/>
+<wire x1="47.565" y1="6.2425" x2="42.545" y2="11.4275" width="0" layer="19" extent="1-1"/>
+<wire x1="39.3065" y1="40.7035" x2="14.665" y2="6.2425" width="0" layer="19" extent="1-1"/>
+<wire x1="36.7665" y1="40.7035" x2="39.3065" y2="40.7035" width="0" layer="19" extent="1-1"/>
+<wire x1="36.7665" y1="22.1615" x2="36.7665" y2="40.7035" width="0" layer="19" extent="1-1"/>
+<wire x1="39.3065" y1="22.1615" x2="36.7665" y2="22.1615" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$1">
 <contactref element="PCB2" pad="P$15"/>
@@ -1819,6 +1886,21 @@ design rules under a new name.</description>
 </signal>
 <signal name="+12V">
 <contactref element="J1" pad="3"/>
+<contactref element="12V-&gt;5V" pad="IN+.1"/>
+<contactref element="12V-&gt;5V" pad="IN+.2"/>
+<wire x1="28.6385" y1="22.1615" x2="8.3975" y2="32.385" width="0" layer="19" extent="1-1"/>
+<wire x1="26.0985" y1="22.1615" x2="28.6385" y2="22.1615" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="+5V">
+<contactref element="12V-&gt;5V" pad="OUT+.1"/>
+<contactref element="12V-&gt;5V" pad="OUT+.2"/>
+<contactref element="C1" pad="1"/>
+<contactref element="PCB2" pad="P$4"/>
+<contactref element="PCB2" pad="P$2"/>
+<wire x1="8.3566" y1="58.8518" x2="10.8966" y2="58.8518" width="0" layer="19" extent="1-1"/>
+<wire x1="11.3825" y1="53.34" x2="10.8966" y2="58.8518" width="0" layer="19" extent="1-1"/>
+<wire x1="26.0985" y1="40.7035" x2="11.3825" y2="53.34" width="0" layer="19" extent="1-1"/>
+<wire x1="28.6385" y1="40.7035" x2="26.0985" y2="40.7035" width="0" layer="19" extent="1-1"/>
 </signal>
 </signals>
 <mfgpreviewcolors>

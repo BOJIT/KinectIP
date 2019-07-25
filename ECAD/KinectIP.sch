@@ -8892,6 +8892,110 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 </deviceset>
 </devicesets>
 </library>
+<library name="diy-modules" urn="urn:adsk.eagle:library:12361804">
+<description>&lt;b&gt;DIY Modules for Arduino, Raspberry Pi, CubieBoard etc.&lt;/b&gt;
+&lt;br&gt;&lt;br&gt;
+The library contains a list of symbols and footprints for popular, cheap and easy-to-use electronic modules.&lt;br&gt;
+The modules are intend to work with microprocessor-based platforms such as &lt;a href="http://arduino.cc"&gt;Arduino&lt;/a&gt;, &lt;a href="http://raspberrypi.org/"&gt;Raspberry Pi&lt;/a&gt;, &lt;a href="http://cubieboard.org/"&gt;CubieBoard&lt;/a&gt;, &lt;a href="http://beagleboard.org/"&gt;BeagleBone&lt;/a&gt; and many others. There are many manufacturers of the modules in the world. Almost all of them can be bought on &lt;a href="ebay.com"&gt;ebay.com&lt;/a&gt;.&lt;br&gt;
+&lt;br&gt;
+By using this library, you can design a PCB for devices created with usage of modules. Even if you do not need to create PCB design, you can also use the library to quickly document your work by drawing schematics of devices built by you.&lt;br&gt;
+&lt;br&gt;
+The latest version, examples, photos and much more can be found at: &lt;b&gt;&lt;a href="http://diymodules.org/eagle"&gt;diymodules.org/eagle&lt;/a&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;
+Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailto:eagle@diymodules.org"&gt;eagle@diymodules.org&lt;/b&gt;&lt;/a&gt;&lt;br&gt;&lt;br&gt;
+&lt;i&gt;Version: 1.8.0 (2017-Jul-02)&lt;/i&gt;&lt;br&gt;
+&lt;i&gt;Created by: Miroslaw Brudnowski&lt;/i&gt;&lt;br&gt;&lt;br&gt;
+&lt;i&gt;Released under the Creative Commons Attribution 4.0 International License: &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;http://creativecommons.org/licenses/by/4.0&lt;/a&gt;&lt;/i&gt;
+&lt;br&gt;&lt;br&gt;
+&lt;center&gt;
+&lt;a href="http://diymodules.org/eagle"&gt;&lt;img src="http://www.diymodules.org/img/diymodules-lbr-image.php?v=1.8.0" alt="DIYmodules.org"&gt;&lt;/a&gt;
+&lt;/center&gt;</description>
+<packages>
+<package name="DC-DC-STEP-DOWN-MP1584" urn="urn:adsk.eagle:footprint:12362022/1" library_version="2">
+<description>&lt;b&gt;DC/DC Step-Down Regulator&lt;/b&gt; based on &lt;b&gt;MP1584&lt;/b&gt; chip</description>
+<wire x1="-11.049" y1="8.382" x2="11.049" y2="8.382" width="0.127" layer="21"/>
+<wire x1="11.049" y1="8.382" x2="11.049" y2="-8.382" width="0.127" layer="21"/>
+<wire x1="11.049" y1="-8.382" x2="-11.049" y2="-8.382" width="0.127" layer="21"/>
+<wire x1="-11.049" y1="-8.382" x2="-11.049" y2="8.382" width="0.127" layer="21"/>
+<wire x1="-6.985" y1="-5.969" x2="-6.985" y2="-4.699" width="0.254" layer="21"/>
+<wire x1="-6.35" y1="5.334" x2="-7.62" y2="5.334" width="0.254" layer="21"/>
+<wire x1="-7.62" y1="-5.334" x2="-6.35" y2="-5.334" width="0.254" layer="21"/>
+<wire x1="6.985" y1="-5.969" x2="6.985" y2="-4.699" width="0.254" layer="21"/>
+<wire x1="7.62" y1="5.334" x2="6.35" y2="5.334" width="0.254" layer="21"/>
+<wire x1="6.35" y1="-5.334" x2="7.62" y2="-5.334" width="0.254" layer="21"/>
+<pad name="IN-.1" x="-9.271" y="6.604" drill="1.2" diameter="2"/>
+<pad name="IN+.2" x="-9.271" y="-6.604" drill="1.2" diameter="2" shape="square"/>
+<pad name="OUT-.1" x="9.271" y="6.604" drill="1.2" diameter="2"/>
+<pad name="IN-.2" x="-9.271" y="4.064" drill="1.2" diameter="2"/>
+<pad name="OUT-.2" x="9.271" y="4.064" drill="1.2" diameter="2"/>
+<pad name="IN+.1" x="-9.271" y="-4.064" drill="1.2" diameter="2" shape="square"/>
+<pad name="OUT+.2" x="9.271" y="-6.604" drill="1.2" diameter="2" shape="square"/>
+<pad name="OUT+.1" x="9.271" y="-4.064" drill="1.2" diameter="2" shape="square"/>
+<text x="0" y="9.525" size="1.27" layer="25" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-9.525" size="1.27" layer="27" align="top-center">&gt;VALUE</text>
+<text x="-9.271" y="0" size="1.524" layer="21" rot="R90" align="center">IN</text>
+<text x="9.271" y="0" size="1.524" layer="21" rot="R90" align="center">OUT</text>
+</package>
+</packages>
+<packages3d>
+<package3d name="DC-DC-STEP-DOWN-MP1584" urn="urn:adsk.eagle:package:12362133/2" type="model" library_version="2">
+<description>&lt;b&gt;DC/DC Step-Down Regulator&lt;/b&gt; based on &lt;b&gt;MP1584&lt;/b&gt; chip</description>
+<packageinstances>
+<packageinstance name="DC-DC-STEP-DOWN-MP1584"/>
+</packageinstances>
+</package3d>
+</packages3d>
+<symbols>
+<symbol name="DC-DC-STEP-DOWN-MP1584" urn="urn:adsk.eagle:symbol:12361911/1" library_version="2">
+<description>&lt;b&gt;DC/DC Step-Down Regulator&lt;/b&gt; based on &lt;b&gt;MP1584&lt;/b&gt; chip</description>
+<pin name="IN+.2" x="-17.78" y="-5.08" visible="pin" length="middle"/>
+<pin name="IN-.1" x="-17.78" y="5.08" visible="pin" length="middle"/>
+<pin name="OUT+.2" x="17.78" y="-5.08" visible="pin" length="middle" rot="R180"/>
+<pin name="OUT-.1" x="17.78" y="5.08" visible="pin" length="middle" rot="R180"/>
+<pin name="IN-.2" x="-17.78" y="2.54" visible="pin" length="middle"/>
+<pin name="IN+.1" x="-17.78" y="-2.54" visible="pin" length="middle"/>
+<pin name="OUT-.2" x="17.78" y="2.54" visible="pin" length="middle" rot="R180"/>
+<pin name="OUT+.1" x="17.78" y="-2.54" visible="pin" length="middle" rot="R180"/>
+<wire x1="-12.7" y1="10.16" x2="12.7" y2="10.16" width="0.254" layer="94"/>
+<wire x1="12.7" y1="10.16" x2="12.7" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="12.7" y1="-10.16" x2="-12.7" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="-12.7" y1="-10.16" x2="-12.7" y2="10.16" width="0.254" layer="94"/>
+<text x="-12.7" y="15.24" size="1.778" layer="95">&gt;NAME</text>
+<text x="-12.7" y="12.7" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="DC-DC-STEP-DOWN-MP1584" urn="urn:adsk.eagle:component:12362241/2" library_version="2">
+<description>&lt;b&gt;DC/DC Step-Down Regulator&lt;/b&gt; based on &lt;b&gt;MP1584&lt;/b&gt; chip
+&lt;p&gt;&lt;b&gt;MP1584&lt;/b&gt; datasheet available here:&lt;br /&gt;
+&lt;a href="http://www.haoyuelectronics.com/Attachment/MP1584/MP1584.pdf"&gt;http://www.haoyuelectronics.com/Attachment/MP1584/MP1584.pdf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;b&gt;&lt;a href="http://www.ebay.com/sch/mp1584+module"&gt;Click here to find device on ebay.com&lt;/a&gt;&lt;/b&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="photo" src="http://www.diymodules.org/img/device-photo.php?name=DC-DC-STEP-DOWN-MP1584"&gt;&lt;/p&gt;</description>
+<gates>
+<gate name="G$1" symbol="DC-DC-STEP-DOWN-MP1584" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="DC-DC-STEP-DOWN-MP1584">
+<connects>
+<connect gate="G$1" pin="IN+.1" pad="IN+.1"/>
+<connect gate="G$1" pin="IN+.2" pad="IN+.2"/>
+<connect gate="G$1" pin="IN-.1" pad="IN-.1"/>
+<connect gate="G$1" pin="IN-.2" pad="IN-.2"/>
+<connect gate="G$1" pin="OUT+.1" pad="OUT+.1"/>
+<connect gate="G$1" pin="OUT+.2" pad="OUT+.2"/>
+<connect gate="G$1" pin="OUT-.1" pad="OUT-.1"/>
+<connect gate="G$1" pin="OUT-.2" pad="OUT-.2"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:12362133/2"/>
+</package3dinstances>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -8917,7 +9021,8 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 <part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="330R"/>
 <part name="J1" library="con-jack-3D" library_urn="urn:adsk.eagle:library:12345140" deviceset="JACK-PLUG-SLOTTED" device="0" package3d_urn="urn:adsk.eagle:package:12345148/2"/>
 <part name="LED" library="LED-90-Degree" library_urn="urn:adsk.eagle:library:12346089" deviceset="LED-90-DEG" device="" package3d_urn="urn:adsk.eagle:package:12346092/4" value="BLUE"/>
-<part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805K" package3d_urn="urn:adsk.eagle:package:23681/2"/>
+<part name="C1" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="C-EU" device="C0805K" package3d_urn="urn:adsk.eagle:package:23681/2" value="100nF"/>
+<part name="12V-&gt;5V" library="diy-modules" library_urn="urn:adsk.eagle:library:12361804" deviceset="DC-DC-STEP-DOWN-MP1584" device="" package3d_urn="urn:adsk.eagle:package:12362133/2"/>
 </parts>
 <sheets>
 <sheet>
@@ -8951,11 +9056,11 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 <instance part="GND1" gate="1" x="177.8" y="68.58" smashed="yes">
 <attribute name="VALUE" x="175.895" y="66.04" size="1.778" layer="96"/>
 </instance>
-<instance part="P+1" gate="1" x="116.84" y="162.56" smashed="yes">
-<attribute name="VALUE" x="114.3" y="157.48" size="1.778" layer="96" rot="R90"/>
+<instance part="P+1" gate="1" x="124.46" y="193.04" smashed="yes">
+<attribute name="VALUE" x="121.92" y="187.96" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="P+2" gate="1" x="88.9" y="162.56" smashed="yes">
-<attribute name="VALUE" x="86.36" y="157.48" size="1.778" layer="96" rot="R90"/>
+<instance part="P+2" gate="1" x="76.2" y="162.56" smashed="yes">
+<attribute name="VALUE" x="73.66" y="157.48" size="1.778" layer="96" rot="R90"/>
 </instance>
 <instance part="R4" gate="G$1" x="147.32" y="137.16" smashed="yes" rot="R90">
 <attribute name="NAME" x="145.8214" y="133.35" size="1.778" layer="95" rot="R90"/>
@@ -8965,17 +9070,21 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 <attribute name="NAME" x="163.6014" y="133.35" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="168.402" y="133.35" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="J1" gate="G$1" x="78.74" y="152.4" smashed="yes">
-<attribute name="NAME" x="71.12" y="157.48" size="1.778" layer="95"/>
-<attribute name="VALUE" x="71.12" y="147.32" size="1.778" layer="96"/>
+<instance part="J1" gate="G$1" x="66.04" y="152.4" smashed="yes">
+<attribute name="NAME" x="58.42" y="157.48" size="1.778" layer="95"/>
+<attribute name="VALUE" x="58.42" y="147.32" size="1.778" layer="96"/>
 </instance>
 <instance part="LED" gate="G$1" x="134.62" y="134.62" smashed="yes">
 <attribute name="NAME" x="138.176" y="132.588" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="140.335" y="132.588" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="C1" gate="G$1" x="116.84" y="149.86" smashed="yes">
-<attribute name="NAME" x="118.364" y="150.241" size="1.778" layer="95"/>
-<attribute name="VALUE" x="118.364" y="145.161" size="1.778" layer="96"/>
+<instance part="C1" gate="G$1" x="119.38" y="93.98" smashed="yes">
+<attribute name="NAME" x="120.904" y="94.361" size="1.778" layer="95"/>
+<attribute name="VALUE" x="120.904" y="89.281" size="1.778" layer="96"/>
+</instance>
+<instance part="12V-&gt;5V" gate="G$1" x="101.6" y="139.7" smashed="yes">
+<attribute name="NAME" x="88.9" y="154.94" size="1.778" layer="95"/>
+<attribute name="VALUE" x="88.9" y="152.4" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -9034,14 +9143,33 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 <pinref part="PCB2" gate="G$1" pin="GND@25"/>
 <wire x1="269.24" y1="129.54" x2="269.24" y2="152.4" width="0.1524" layer="91"/>
 <pinref part="J1" gate="G$1" pin="1"/>
-<wire x1="83.82" y1="149.86" x2="88.9" y2="149.86" width="0.1524" layer="91"/>
-<wire x1="88.9" y1="149.86" x2="88.9" y2="71.12" width="0.1524" layer="91"/>
-<wire x1="88.9" y1="71.12" x2="134.62" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="149.86" x2="76.2" y2="149.86" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="149.86" x2="76.2" y2="144.78" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="144.78" x2="76.2" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="71.12" x2="119.38" y2="71.12" width="0.1524" layer="91"/>
 <junction x="134.62" y="71.12"/>
 <pinref part="J1" gate="G$1" pin="2"/>
-<wire x1="83.82" y1="152.4" x2="88.9" y2="152.4" width="0.1524" layer="91"/>
-<wire x1="88.9" y1="152.4" x2="88.9" y2="149.86" width="0.1524" layer="91"/>
-<junction x="88.9" y="149.86"/>
+<wire x1="119.38" y1="71.12" x2="127" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="127" y1="71.12" x2="134.62" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="152.4" x2="76.2" y2="152.4" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="152.4" x2="76.2" y2="149.86" width="0.1524" layer="91"/>
+<junction x="76.2" y="149.86"/>
+<pinref part="12V-&gt;5V" gate="G$1" pin="IN-.1"/>
+<pinref part="12V-&gt;5V" gate="G$1" pin="IN-.2"/>
+<wire x1="83.82" y1="144.78" x2="83.82" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="83.82" y1="144.78" x2="76.2" y2="144.78" width="0.1524" layer="91"/>
+<junction x="83.82" y="144.78"/>
+<junction x="76.2" y="144.78"/>
+<pinref part="12V-&gt;5V" gate="G$1" pin="OUT-.1"/>
+<pinref part="12V-&gt;5V" gate="G$1" pin="OUT-.2"/>
+<wire x1="119.38" y1="144.78" x2="119.38" y2="142.24" width="0.1524" layer="91"/>
+<wire x1="119.38" y1="144.78" x2="127" y2="144.78" width="0.1524" layer="91"/>
+<junction x="119.38" y="144.78"/>
+<wire x1="127" y1="144.78" x2="127" y2="71.12" width="0.1524" layer="91"/>
+<junction x="127" y="71.12"/>
+<pinref part="C1" gate="G$1" pin="2"/>
+<wire x1="119.38" y1="88.9" x2="119.38" y2="71.12" width="0.1524" layer="91"/>
+<junction x="119.38" y="71.12"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -9103,8 +9231,38 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 <segment>
 <pinref part="J1" gate="G$1" pin="3"/>
 <pinref part="P+2" gate="1" pin="+12V"/>
-<wire x1="83.82" y1="154.94" x2="88.9" y2="154.94" width="0.1524" layer="91"/>
-<wire x1="88.9" y1="154.94" x2="88.9" y2="160.02" width="0.1524" layer="91"/>
+<wire x1="71.12" y1="154.94" x2="76.2" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="154.94" x2="76.2" y2="160.02" width="0.1524" layer="91"/>
+<pinref part="12V-&gt;5V" gate="G$1" pin="IN+.1"/>
+<wire x1="83.82" y1="137.16" x2="78.74" y2="137.16" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="137.16" x2="78.74" y2="154.94" width="0.1524" layer="91"/>
+<wire x1="78.74" y1="154.94" x2="76.2" y2="154.94" width="0.1524" layer="91"/>
+<junction x="76.2" y="154.94"/>
+<pinref part="12V-&gt;5V" gate="G$1" pin="IN+.2"/>
+<wire x1="83.82" y1="134.62" x2="83.82" y2="137.16" width="0.1524" layer="91"/>
+<junction x="83.82" y="137.16"/>
+</segment>
+</net>
+<net name="+5V" class="0">
+<segment>
+<pinref part="12V-&gt;5V" gate="G$1" pin="OUT+.1"/>
+<wire x1="124.46" y1="137.16" x2="119.38" y2="137.16" width="0.1524" layer="91"/>
+<pinref part="12V-&gt;5V" gate="G$1" pin="OUT+.2"/>
+<wire x1="119.38" y1="137.16" x2="119.38" y2="134.62" width="0.1524" layer="91"/>
+<junction x="119.38" y="137.16"/>
+<pinref part="C1" gate="G$1" pin="1"/>
+<wire x1="119.38" y1="96.52" x2="119.38" y2="134.62" width="0.1524" layer="91"/>
+<junction x="119.38" y="134.62"/>
+<pinref part="P+1" gate="1" pin="+5V"/>
+<wire x1="124.46" y1="137.16" x2="124.46" y2="185.42" width="0.1524" layer="91"/>
+<pinref part="PCB2" gate="G$1" pin="5V@2"/>
+<pinref part="PCB2" gate="G$1" pin="5V@4"/>
+<wire x1="124.46" y1="185.42" x2="124.46" y2="190.5" width="0.1524" layer="91"/>
+<wire x1="213.36" y1="180.34" x2="208.28" y2="180.34" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="180.34" x2="208.28" y2="185.42" width="0.1524" layer="91"/>
+<wire x1="208.28" y1="185.42" x2="124.46" y2="185.42" width="0.1524" layer="91"/>
+<junction x="208.28" y="180.34"/>
+<junction x="124.46" y="185.42"/>
 </segment>
 </net>
 </nets>

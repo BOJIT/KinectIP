@@ -7488,7 +7488,7 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 </library>
 <library name="LED-90-Degree" urn="urn:adsk.eagle:library:12346089">
 <packages>
-<package name="LED-90-DEG" urn="urn:adsk.eagle:footprint:12346090/1" library_version="3">
+<package name="LED-90-DEG" urn="urn:adsk.eagle:footprint:12346090/1" library_version="4">
 <pad name="A" x="-1.27" y="0" drill="0.8128" shape="octagon"/>
 <pad name="K" x="1.27" y="0" drill="0.8128" shape="octagon"/>
 <text x="-2.6035" y="-2.8575" size="1.27" layer="25" ratio="10" rot="R90">&gt;NAME</text>
@@ -7508,14 +7508,14 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 </package>
 </packages>
 <packages3d>
-<package3d name="LED-90-DEG" urn="urn:adsk.eagle:package:12346092/2" type="model" library_version="3">
+<package3d name="LED-90-DEG" urn="urn:adsk.eagle:package:12346092/4" type="model" library_version="4">
 <packageinstances>
 <packageinstance name="LED-90-DEG"/>
 </packageinstances>
 </package3d>
 </packages3d>
 <symbols>
-<symbol name="LED-90-DEG" urn="urn:adsk.eagle:symbol:12346091/1" library_version="3">
+<symbol name="LED-90-DEG" urn="urn:adsk.eagle:symbol:12346091/1" library_version="4">
 <wire x1="1.27" y1="2.54" x2="0" y2="0" width="0.254" layer="94"/>
 <wire x1="0" y1="0" x2="-1.27" y2="2.54" width="0.254" layer="94"/>
 <wire x1="1.27" y1="0" x2="0" y2="0" width="0.254" layer="94"/>
@@ -7542,7 +7542,7 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="LED-90-DEG" urn="urn:adsk.eagle:component:12346093/2" library_version="3">
+<deviceset name="LED-90-DEG" urn="urn:adsk.eagle:component:12346093/3" library_version="4">
 <gates>
 <gate name="G$1" symbol="LED-90-DEG" x="0" y="0"/>
 </gates>
@@ -7553,7 +7553,7 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 <connect gate="G$1" pin="C" pad="K"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:12346092/2"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:12346092/4"/>
 </package3dinstances>
 <technologies>
 <technology name=""/>
@@ -7588,7 +7588,7 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 <part name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="330R"/>
 <part name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" deviceset="R-EU_" device="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="330R"/>
 <part name="J1" library="con-jack-3D" library_urn="urn:adsk.eagle:library:12345140" deviceset="JACK-PLUG-SLOTTED" device="0" package3d_urn="urn:adsk.eagle:package:12345148/2"/>
-<part name="U$1" library="LED-90-Degree" library_urn="urn:adsk.eagle:library:12346089" deviceset="LED-90-DEG" device="" package3d_urn="urn:adsk.eagle:package:12346092/2"/>
+<part name="LED" library="LED-90-Degree" library_urn="urn:adsk.eagle:library:12346089" deviceset="LED-90-DEG" device="" package3d_urn="urn:adsk.eagle:package:12346092/4" value="BLUE"/>
 </parts>
 <sheets>
 <sheet>
@@ -7644,9 +7644,9 @@ Type: &lt;b&gt;SPC4077 / SPC 4078&lt;/b&gt;&lt;p&gt;</description>
 <attribute name="NAME" x="71.12" y="157.48" size="1.778" layer="95"/>
 <attribute name="VALUE" x="71.12" y="147.32" size="1.778" layer="96"/>
 </instance>
-<instance part="U$1" gate="G$1" x="119.38" y="124.46" smashed="yes">
-<attribute name="NAME" x="122.936" y="122.428" size="1.778" layer="95" rot="R90"/>
-<attribute name="VALUE" x="125.095" y="122.428" size="1.778" layer="96" rot="R90"/>
+<instance part="LED" gate="G$1" x="116.84" y="134.62" smashed="yes">
+<attribute name="NAME" x="120.396" y="132.588" size="1.778" layer="95" rot="R90"/>
+<attribute name="VALUE" x="122.555" y="132.588" size="1.778" layer="96" rot="R90"/>
 </instance>
 </instances>
 <busses>
