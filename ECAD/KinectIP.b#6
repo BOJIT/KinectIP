@@ -1640,8 +1640,76 @@ design rules under a new name.</description>
 <attribute name="SPICEPREFIX" value="R" x="1.27" y="-23.495" size="1.778" layer="27" display="off"/>
 <attribute name="VALUE" x="0.635" y="-26.035" size="1.27" layer="27"/>
 </element>
+<element name="R4" library="rcl" library_urn="urn:adsk.eagle:library:334" package="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="" x="1.27" y="-27.6225" smashed="yes">
+<attribute name="NAME" x="0.635" y="-26.3525" size="1.27" layer="25"/>
+<attribute name="SPICEPREFIX" value="R" x="1.27" y="-27.6225" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="0.635" y="-30.1625" size="1.27" layer="27"/>
+</element>
+<element name="R5" library="rcl" library_urn="urn:adsk.eagle:library:334" package="R0805" package3d_urn="urn:adsk.eagle:package:23553/2" value="" x="1.27" y="-31.75" smashed="yes">
+<attribute name="NAME" x="0.635" y="-30.48" size="1.27" layer="25"/>
+<attribute name="SPICEPREFIX" value="R" x="1.27" y="-31.75" size="1.778" layer="27" display="off"/>
+<attribute name="VALUE" x="0.635" y="-34.29" size="1.27" layer="27"/>
+</element>
 </elements>
 <signals>
+<signal name="+3V3">
+<contactref element="PCB2" pad="P$1"/>
+<contactref element="R4" pad="2"/>
+<contactref element="R5" pad="2"/>
+<wire x1="2.22" y1="-27.6225" x2="8.37" y2="56.31" width="0" layer="19" extent="1-1"/>
+<wire x1="2.22" y1="-31.75" x2="2.22" y2="-27.6225" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="0V">
+<contactref element="PCB2" pad="P$9"/>
+<contactref element="R1" pad="1"/>
+<contactref element="PWR" pad="MNT$1"/>
+<contactref element="ID" pad="MNT$1"/>
+<contactref element="R2" pad="1"/>
+<contactref element="R3" pad="1"/>
+<contactref element="ID" pad="MNT$2"/>
+<contactref element="PWR" pad="MNT$2"/>
+<wire x1="22.165" y1="6.2425" x2="18.5166" y2="56.3118" width="0" layer="19" extent="1-1"/>
+<wire x1="14.665" y1="6.2425" x2="22.165" y2="6.2425" width="0" layer="19" extent="1-1"/>
+<wire x1="40.065" y1="6.2425" x2="22.165" y2="6.2425" width="0" layer="19" extent="1-1"/>
+<wire x1="47.565" y1="6.2425" x2="40.065" y2="6.2425" width="0" layer="19" extent="1-1"/>
+<wire x1="0.32" y1="-15.24" x2="14.665" y2="6.2425" width="0" layer="19" extent="1-1"/>
+<wire x1="0.32" y1="-19.3675" x2="0.32" y2="-15.24" width="0" layer="19" extent="1-1"/>
+<wire x1="0.32" y1="-23.495" x2="0.32" y2="-19.3675" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$1">
+<contactref element="PCB2" pad="P$15"/>
+<contactref element="LED1" pad="A"/>
+<wire x1="30.1625" y1="3.4925" x2="26.1366" y2="56.3118" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$2">
+<contactref element="LED1" pad="K"/>
+<contactref element="R1" pad="2"/>
+<wire x1="2.22" y1="-15.24" x2="32.7025" y2="3.4925" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$3">
+<contactref element="ID" pad="SW$2"/>
+<contactref element="R4" pad="1"/>
+<wire x1="20.665" y1="3.4925" x2="0.32" y2="-27.6225" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$4">
+<contactref element="PWR" pad="SW$2"/>
+<contactref element="R5" pad="1"/>
+<wire x1="0.32" y1="-31.75" x2="46.065" y2="3.4925" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$5">
+<contactref element="ID" pad="SW$1"/>
+<contactref element="R2" pad="2"/>
+<contactref element="P5+" pad="P$1"/>
+<wire x1="16.165" y1="3.4925" x2="16.255" y2="53.235" width="0" layer="19" extent="1-1"/>
+<wire x1="2.22" y1="-19.3675" x2="16.165" y2="3.4925" width="0" layer="19" extent="1-1"/>
+</signal>
+<signal name="N$6">
+<contactref element="R3" pad="2"/>
+<contactref element="PWR" pad="SW$1"/>
+<contactref element="P5+" pad="P$2"/>
+<wire x1="41.565" y1="3.4925" x2="18.795" y2="53.235" width="0" layer="19" extent="1-1"/>
+<wire x1="2.22" y1="-23.495" x2="41.565" y2="3.4925" width="0" layer="19" extent="1-1"/>
+</signal>
 </signals>
 <mfgpreviewcolors>
 <mfgpreviewcolor name="soldermaskcolor" color="0xC8008000"/>
