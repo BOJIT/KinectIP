@@ -8,6 +8,8 @@
 	#define LED_pin 100
 	#define Switch1 82
 	#define Switch2 83
+
+	#define OPENCL
 //**************END***************//
 
 //************GLOBALS*************//
@@ -125,10 +127,10 @@
 
 		NDIlib_video_frame_v2_t NDI_frame = createFrame(source[1], false);			// collect metadata with initial frame
 		if (!listener.waitForNewFrame(frames, 10*1000)) // 10 seconds
-			{
-				std::cout << "timeout! Device Not Responding" << std::endl;
-				return -1;
-			}
+		{
+			std::cout << "timeout! Device Not Responding" << std::endl;
+			return -1;
+		}
 		libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
 		NDI_frame.xres = rgb->width;
 		NDI_frame.yres = rgb->height;
@@ -297,11 +299,12 @@
 			serial = freenect2.getDefaultDeviceSerialNumber();
 		}
 		if(!pipeline)
-		{
-			#if defined LIBFREENECT2_WITH_OPENGL_SUPPORT && defined HEADLESS_GPU 	// note currently openGL is not utilised, future optimisation
-				pipeline = new libfreenect2::OpenGLPacketPipeline();
+		{	
+			#if defined LIBFREENECT2_WITH_OPENGL_SUPPORT && defined OPENCL
+      	if(!pipeline)
+        	pipeline = new libfreenect2::OpenGLPacketPipeline();
 			#else
-				std::cout << "OpenGL pipeline is not supported in current configuration!" << std::endl;
+				std::cout << "OpenCL pipeline is not supported!" << std::endl;
 				pipeline = new libfreenect2::CpuPacketPipeline();
 			#endif
 		}
