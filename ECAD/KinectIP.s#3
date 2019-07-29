@@ -82,7 +82,7 @@ Authors:&lt;br&gt;
 &lt;ul&gt;
 &lt;li&gt;James Bennion-Pedley [https://github.com/BOJIT]&lt;/li&gt;</description>
 <packages>
-<package name="ROCK64" urn="urn:adsk.eagle:footprint:12239989/2" library_version="2">
+<package name="ROCK64" urn="urn:adsk.eagle:footprint:12239989/3" library_version="3">
 <wire x1="0" y1="53" x2="0" y2="3" width="0.127" layer="48"/>
 <wire x1="0" y1="3" x2="3" y2="0" width="0.127" layer="48" curve="90"/>
 <wire x1="3" y1="0" x2="82" y2="0" width="0.127" layer="48"/>
@@ -221,8 +221,56 @@ Authors:&lt;br&gt;
 <vertex x="0.5" y="3.5" curve="-90"/>
 <vertex x="3.5" y="6.5" curve="-90"/>
 </polygon>
+<polygon width="0.0254" layer="1" pour="cutout">
+<vertex x="3.5" y="56" curve="90"/>
+<vertex x="0" y="52.5" curve="90"/>
+<vertex x="3.5" y="49" curve="90"/>
+<vertex x="7" y="52.5" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="1" pour="cutout">
+<vertex x="0" y="3.5" curve="90"/>
+<vertex x="3.5" y="0" curve="90"/>
+<vertex x="7" y="3.5" curve="90"/>
+<vertex x="3.5" y="7" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="1" pour="cutout">
+<vertex x="58" y="3.5" curve="90"/>
+<vertex x="61.5" y="0" curve="90"/>
+<vertex x="65" y="3.5" curve="90"/>
+<vertex x="61.5" y="7" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="1" pour="cutout">
+<vertex x="61.5" y="49" curve="90"/>
+<vertex x="65" y="52.5" curve="90"/>
+<vertex x="61.5" y="56" curve="90"/>
+<vertex x="58" y="52.5" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="16" pour="cutout">
+<vertex x="3.5" y="56" curve="90"/>
+<vertex x="0" y="52.5" curve="90"/>
+<vertex x="3.5" y="49" curve="90"/>
+<vertex x="7" y="52.5" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="16" pour="cutout">
+<vertex x="0" y="3.5" curve="90"/>
+<vertex x="3.5" y="0" curve="90"/>
+<vertex x="7" y="3.5" curve="90"/>
+<vertex x="3.5" y="7" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="16" pour="cutout">
+<vertex x="58" y="3.5" curve="90"/>
+<vertex x="61.5" y="0" curve="90"/>
+<vertex x="65" y="3.5" curve="90"/>
+<vertex x="61.5" y="7" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="16" pour="cutout">
+<vertex x="61.5" y="49" curve="90"/>
+<vertex x="65" y="52.5" curve="90"/>
+<vertex x="61.5" y="56" curve="90"/>
+<vertex x="58" y="52.5" curve="90"/>
+</polygon>
 </package>
-<package name="ROCK64MIRROR" urn="urn:adsk.eagle:footprint:12239988/1">
+<package name="ROCK64MIRROR" urn="urn:adsk.eagle:footprint:12239988/2" library_version="3">
 <wire x1="0" y1="3.005" x2="0" y2="53.005" width="0.127" layer="48"/>
 <wire x1="0" y1="53.005" x2="3" y2="56.005" width="0.127" layer="48" curve="-90"/>
 <wire x1="3" y1="56.005" x2="82" y2="56.005" width="0.127" layer="48"/>
@@ -309,15 +357,63 @@ Authors:&lt;br&gt;
 <vertex x="6.5" y="3.5" curve="-90"/>
 <vertex x="3.5" y="0.5" curve="-90"/>
 </polygon>
+<polygon width="0.0254" layer="1" pour="cutout">
+<vertex x="3.5" y="56" curve="90"/>
+<vertex x="0" y="52.5" curve="90"/>
+<vertex x="3.5" y="49" curve="90"/>
+<vertex x="7" y="52.5" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="1" pour="cutout">
+<vertex x="0" y="3.5" curve="90"/>
+<vertex x="3.5" y="0" curve="90"/>
+<vertex x="7" y="3.5" curve="90"/>
+<vertex x="3.5" y="7" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="1" pour="cutout">
+<vertex x="58" y="3.5" curve="90"/>
+<vertex x="61.5" y="0" curve="90"/>
+<vertex x="65" y="3.5" curve="90"/>
+<vertex x="61.5" y="7" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="1" pour="cutout">
+<vertex x="61.5" y="49" curve="90"/>
+<vertex x="65" y="52.5" curve="90"/>
+<vertex x="61.5" y="56" curve="90"/>
+<vertex x="58" y="52.5" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="16" pour="cutout">
+<vertex x="3.5" y="56" curve="90"/>
+<vertex x="0" y="52.5" curve="90"/>
+<vertex x="3.5" y="49" curve="90"/>
+<vertex x="7" y="52.5" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="16" pour="cutout">
+<vertex x="0" y="3.5" curve="90"/>
+<vertex x="3.5" y="0" curve="90"/>
+<vertex x="7" y="3.5" curve="90"/>
+<vertex x="3.5" y="7" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="16" pour="cutout">
+<vertex x="58" y="3.5" curve="90"/>
+<vertex x="61.5" y="0" curve="90"/>
+<vertex x="65" y="3.5" curve="90"/>
+<vertex x="61.5" y="7" curve="90"/>
+</polygon>
+<polygon width="0.0254" layer="16" pour="cutout">
+<vertex x="61.5" y="49" curve="90"/>
+<vertex x="65" y="52.5" curve="90"/>
+<vertex x="61.5" y="56" curve="90"/>
+<vertex x="58" y="52.5" curve="90"/>
+</polygon>
 </package>
 </packages>
 <packages3d>
-<package3d name="ROCK64" urn="urn:adsk.eagle:package:12239992/3" type="model" library_version="2">
+<package3d name="ROCK64" urn="urn:adsk.eagle:package:12239992/4" type="model" library_version="3">
 <packageinstances>
 <packageinstance name="ROCK64"/>
 </packageinstances>
 </package3d>
-<package3d name="ROCK64MIRROR" urn="urn:adsk.eagle:package:12239991/2" type="model">
+<package3d name="ROCK64MIRROR" urn="urn:adsk.eagle:package:12239991/3" type="model" library_version="3">
 <packageinstances>
 <packageinstance name="ROCK64MIRROR"/>
 </packageinstances>
@@ -416,7 +512,7 @@ unconnected if ID EEPROM not required.</text>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="ROCK64" urn="urn:adsk.eagle:component:12241293/2" prefix="PCB" library_version="2">
+<deviceset name="ROCK64" urn="urn:adsk.eagle:component:12241293/3" prefix="PCB" library_version="3">
 <description>Device for Rock64 SBC
 
 &lt;p&gt;SBC and Development Board Libraries are located at https://github.com/BOJIT/EAGLE
@@ -469,7 +565,7 @@ unconnected if ID EEPROM not required.</text>
 <connect gate="G$1" pin="ID_SD*" pad="P$27"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:12239992/3"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:12239992/4"/>
 </package3dinstances>
 <technologies>
 <technology name=""/>
@@ -519,7 +615,7 @@ unconnected if ID EEPROM not required.</text>
 <connect gate="G$1" pin="ID_SD*" pad="P$27"/>
 </connects>
 <package3dinstances>
-<package3dinstance package3d_urn="urn:adsk.eagle:package:12239991/2"/>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:12239991/3"/>
 </package3dinstances>
 <technologies>
 <technology name=""/>
@@ -9089,7 +9185,7 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 </class>
 </classes>
 <parts>
-<part name="PCB2" library="Rock64" library_urn="urn:adsk.eagle:library:12241252" deviceset="ROCK64" device="ROCK64" package3d_urn="urn:adsk.eagle:package:12239992/3"/>
+<part name="PCB2" library="Rock64" library_urn="urn:adsk.eagle:library:12241252" deviceset="ROCK64" device="ROCK64" package3d_urn="urn:adsk.eagle:package:12239992/4"/>
 <part name="PWR" library="Right-Angle-Switch" library_urn="urn:adsk.eagle:library:12341455" deviceset="RIGHT-ANGLE-SWITCH" device="" package3d_urn="urn:adsk.eagle:package:12341458/3"/>
 <part name="ID" library="Right-Angle-Switch" library_urn="urn:adsk.eagle:library:12341455" deviceset="RIGHT-ANGLE-SWITCH" device="" package3d_urn="urn:adsk.eagle:package:12341458/3"/>
 <part name="P5+" library="Female-Header" library_urn="urn:adsk.eagle:library:12344421" deviceset="2PIN-FEMALE-HEADER" device="" package3d_urn="urn:adsk.eagle:package:12344424/3"/>
@@ -9121,6 +9217,17 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <part name="KINECT_GREY" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
 <part name="KINECT_BLACK" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
 <part name="KINECT_BROWN" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
+<part name="P+3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+12V" device=""/>
+<part name="USB_VCC_HOST" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
+<part name="USB_D-_HOST" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
+<part name="USB_D+_HOST" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
+<part name="USB_GND_HOST" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
+<part name="USB3_ORANGE_HOST" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
+<part name="USB3_PURPLE_HOST" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
+<part name="USB3_GND1_HOST" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
+<part name="USB3_GND2_HOST" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
+<part name="USB3_YELLOW_HOST" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
+<part name="USB3_BLUE_HOST" library="wirepad" library_urn="urn:adsk.eagle:library:412" deviceset="SMD2" device="" package3d_urn="urn:adsk.eagle:package:30839/1"/>
 </parts>
 <sheets>
 <sheet>
@@ -9192,57 +9299,100 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <attribute name="NAME" x="84.5058" y="67.437" size="1.778" layer="95" rot="R90"/>
 <attribute name="VALUE" x="89.662" y="67.437" size="1.778" layer="96" rot="R90"/>
 </instance>
-<instance part="USB_VCC" gate="1" x="22.86" y="132.08" smashed="yes">
-<attribute name="NAME" x="21.717" y="133.9342" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="128.778" size="1.778" layer="96"/>
+<instance part="USB_VCC" gate="1" x="20.32" y="121.92" smashed="yes">
+<attribute name="NAME" x="19.177" y="123.7742" size="1.778" layer="95"/>
+<attribute name="VALUE" x="19.177" y="118.618" size="1.778" layer="96"/>
 </instance>
-<instance part="USB_D-" gate="1" x="22.86" y="127" smashed="yes">
-<attribute name="NAME" x="21.717" y="128.8542" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="123.698" size="1.778" layer="96"/>
+<instance part="USB_D-" gate="1" x="20.32" y="116.84" smashed="yes">
+<attribute name="NAME" x="19.177" y="118.6942" size="1.778" layer="95"/>
+<attribute name="VALUE" x="19.177" y="113.538" size="1.778" layer="96"/>
 </instance>
-<instance part="USB_D+" gate="1" x="22.86" y="121.92" smashed="yes">
-<attribute name="NAME" x="21.717" y="123.7742" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="118.618" size="1.778" layer="96"/>
+<instance part="USB_D+" gate="1" x="20.32" y="111.76" smashed="yes">
+<attribute name="NAME" x="19.177" y="113.6142" size="1.778" layer="95"/>
+<attribute name="VALUE" x="19.177" y="108.458" size="1.778" layer="96"/>
 </instance>
-<instance part="USB_GND" gate="1" x="22.86" y="116.84" smashed="yes">
-<attribute name="NAME" x="21.717" y="118.6942" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="113.538" size="1.778" layer="96"/>
+<instance part="USB_GND" gate="1" x="20.32" y="106.68" smashed="yes">
+<attribute name="NAME" x="19.177" y="108.5342" size="1.778" layer="95"/>
+<attribute name="VALUE" x="19.177" y="103.378" size="1.778" layer="96"/>
 </instance>
-<instance part="USB3_ORANGE" gate="1" x="22.86" y="109.22" smashed="yes">
-<attribute name="NAME" x="21.717" y="111.0742" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="105.918" size="1.778" layer="96"/>
+<instance part="USB3_ORANGE" gate="1" x="12.7" y="99.06" smashed="yes">
+<attribute name="NAME" x="11.557" y="100.9142" size="1.778" layer="95"/>
+<attribute name="VALUE" x="11.557" y="95.758" size="1.778" layer="96"/>
 </instance>
-<instance part="USB3_PURPLE" gate="1" x="22.86" y="104.14" smashed="yes">
-<attribute name="NAME" x="21.717" y="105.9942" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="100.838" size="1.778" layer="96"/>
+<instance part="USB3_PURPLE" gate="1" x="12.7" y="93.98" smashed="yes">
+<attribute name="NAME" x="11.557" y="95.8342" size="1.778" layer="95"/>
+<attribute name="VALUE" x="11.557" y="90.678" size="1.778" layer="96"/>
 </instance>
-<instance part="USB3_GND1" gate="1" x="22.86" y="99.06" smashed="yes">
-<attribute name="NAME" x="21.717" y="100.9142" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="95.758" size="1.778" layer="96"/>
+<instance part="USB3_GND1" gate="1" x="12.7" y="88.9" smashed="yes">
+<attribute name="NAME" x="11.557" y="90.7542" size="1.778" layer="95"/>
+<attribute name="VALUE" x="11.557" y="85.598" size="1.778" layer="96"/>
 </instance>
-<instance part="USB3_GND2" gate="1" x="22.86" y="93.98" smashed="yes">
-<attribute name="NAME" x="21.717" y="95.8342" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="90.678" size="1.778" layer="96"/>
+<instance part="USB3_GND2" gate="1" x="12.7" y="83.82" smashed="yes">
+<attribute name="NAME" x="11.557" y="85.6742" size="1.778" layer="95"/>
+<attribute name="VALUE" x="11.557" y="80.518" size="1.778" layer="96"/>
 </instance>
-<instance part="USB3_YELLOW" gate="1" x="22.86" y="88.9" smashed="yes">
-<attribute name="NAME" x="21.717" y="90.7542" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="85.598" size="1.778" layer="96"/>
+<instance part="USB3_YELLOW" gate="1" x="12.7" y="78.74" smashed="yes">
+<attribute name="NAME" x="11.557" y="80.5942" size="1.778" layer="95"/>
+<attribute name="VALUE" x="11.557" y="75.438" size="1.778" layer="96"/>
 </instance>
-<instance part="USB3_BLUE" gate="1" x="22.86" y="83.82" smashed="yes">
-<attribute name="NAME" x="21.717" y="85.6742" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="80.518" size="1.778" layer="96"/>
+<instance part="USB3_BLUE" gate="1" x="12.7" y="73.66" smashed="yes">
+<attribute name="NAME" x="11.557" y="75.5142" size="1.778" layer="95"/>
+<attribute name="VALUE" x="11.557" y="70.358" size="1.778" layer="96"/>
 </instance>
-<instance part="KINECT_GREY" gate="1" x="22.86" y="139.7" smashed="yes">
-<attribute name="NAME" x="21.717" y="141.5542" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="136.398" size="1.778" layer="96"/>
+<instance part="KINECT_GREY" gate="1" x="20.32" y="129.54" smashed="yes">
+<attribute name="NAME" x="19.177" y="131.3942" size="1.778" layer="95"/>
+<attribute name="VALUE" x="19.177" y="126.238" size="1.778" layer="96"/>
 </instance>
-<instance part="KINECT_BLACK" gate="1" x="22.86" y="144.78" smashed="yes">
-<attribute name="NAME" x="21.717" y="146.6342" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="141.478" size="1.778" layer="96"/>
+<instance part="KINECT_BLACK" gate="1" x="20.32" y="134.62" smashed="yes">
+<attribute name="NAME" x="19.177" y="136.4742" size="1.778" layer="95"/>
+<attribute name="VALUE" x="19.177" y="131.318" size="1.778" layer="96"/>
 </instance>
-<instance part="KINECT_BROWN" gate="1" x="22.86" y="149.86" smashed="yes">
-<attribute name="NAME" x="21.717" y="151.7142" size="1.778" layer="95"/>
-<attribute name="VALUE" x="21.717" y="146.558" size="1.778" layer="96"/>
+<instance part="KINECT_BROWN" gate="1" x="20.32" y="139.7" smashed="yes">
+<attribute name="NAME" x="19.177" y="141.5542" size="1.778" layer="95"/>
+<attribute name="VALUE" x="19.177" y="136.398" size="1.778" layer="96"/>
+</instance>
+<instance part="P+3" gate="1" x="45.72" y="162.56" smashed="yes">
+<attribute name="VALUE" x="43.18" y="157.48" size="1.778" layer="96" rot="R90"/>
+</instance>
+<instance part="USB_VCC_HOST" gate="1" x="58.42" y="121.92" smashed="yes" rot="MR0">
+<attribute name="NAME" x="59.563" y="123.7742" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="59.563" y="118.618" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="USB_D-_HOST" gate="1" x="58.42" y="116.84" smashed="yes" rot="MR0">
+<attribute name="NAME" x="59.563" y="118.6942" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="59.563" y="113.538" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="USB_D+_HOST" gate="1" x="58.42" y="111.76" smashed="yes" rot="MR0">
+<attribute name="NAME" x="59.563" y="113.6142" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="59.563" y="108.458" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="USB_GND_HOST" gate="1" x="58.42" y="106.68" smashed="yes" rot="MR0">
+<attribute name="NAME" x="59.563" y="108.5342" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="59.563" y="103.378" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="USB3_ORANGE_HOST" gate="1" x="58.42" y="99.06" smashed="yes" rot="MR0">
+<attribute name="NAME" x="59.563" y="100.9142" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="59.563" y="95.758" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="USB3_PURPLE_HOST" gate="1" x="58.42" y="93.98" smashed="yes" rot="MR0">
+<attribute name="NAME" x="59.563" y="95.8342" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="59.563" y="90.678" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="USB3_GND1_HOST" gate="1" x="58.42" y="88.9" smashed="yes" rot="MR0">
+<attribute name="NAME" x="59.563" y="90.7542" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="59.563" y="85.598" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="USB3_GND2_HOST" gate="1" x="58.42" y="83.82" smashed="yes" rot="MR0">
+<attribute name="NAME" x="59.563" y="85.6742" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="59.563" y="80.518" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="USB3_YELLOW_HOST" gate="1" x="58.42" y="78.74" smashed="yes" rot="MR0">
+<attribute name="NAME" x="59.563" y="80.5942" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="59.563" y="75.438" size="1.778" layer="96" rot="MR0"/>
+</instance>
+<instance part="USB3_BLUE_HOST" gate="1" x="58.42" y="73.66" smashed="yes" rot="MR0">
+<attribute name="NAME" x="59.563" y="75.5142" size="1.778" layer="95" rot="MR0"/>
+<attribute name="VALUE" x="59.563" y="70.358" size="1.778" layer="96" rot="MR0"/>
 </instance>
 </instances>
 <busses>
@@ -9303,7 +9453,9 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <pinref part="J1" gate="G$1" pin="1"/>
 <wire x1="71.12" y1="149.86" x2="76.2" y2="149.86" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="149.86" x2="76.2" y2="144.78" width="0.1524" layer="91"/>
-<wire x1="76.2" y1="144.78" x2="76.2" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="144.78" x2="76.2" y2="134.62" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="134.62" x2="76.2" y2="129.54" width="0.1524" layer="91"/>
+<wire x1="76.2" y1="129.54" x2="76.2" y2="71.12" width="0.1524" layer="91"/>
 <wire x1="76.2" y1="71.12" x2="86.36" y2="71.12" width="0.1524" layer="91"/>
 <junction x="134.62" y="71.12"/>
 <pinref part="J1" gate="G$1" pin="2"/>
@@ -9333,6 +9485,12 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <junction x="76.2" y="71.12"/>
 <pinref part="SH2" gate="1" pin="P"/>
 <junction x="86.36" y="71.12"/>
+<pinref part="KINECT_BLACK" gate="1" pin="P"/>
+<wire x1="22.86" y1="134.62" x2="76.2" y2="134.62" width="0.1524" layer="91"/>
+<junction x="76.2" y="134.62"/>
+<pinref part="KINECT_GREY" gate="1" pin="P"/>
+<wire x1="22.86" y1="129.54" x2="76.2" y2="129.54" width="0.1524" layer="91"/>
+<junction x="76.2" y="129.54"/>
 </segment>
 </net>
 <net name="N$1" class="0">
@@ -9405,6 +9563,12 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <wire x1="83.82" y1="134.62" x2="83.82" y2="137.16" width="0.1524" layer="91"/>
 <junction x="83.82" y="137.16"/>
 </segment>
+<segment>
+<pinref part="KINECT_BROWN" gate="1" pin="P"/>
+<pinref part="P+3" gate="1" pin="+12V"/>
+<wire x1="22.86" y1="139.7" x2="45.72" y2="139.7" width="0.1524" layer="91"/>
+<wire x1="45.72" y1="139.7" x2="45.72" y2="160.02" width="0.1524" layer="91"/>
+</segment>
 </net>
 <net name="+5V" class="0">
 <segment>
@@ -9426,6 +9590,78 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <wire x1="208.28" y1="185.42" x2="124.46" y2="185.42" width="0.1524" layer="91"/>
 <junction x="208.28" y="180.34"/>
 <junction x="124.46" y="185.42"/>
+</segment>
+</net>
+<net name="N$7" class="0">
+<segment>
+<pinref part="USB_VCC" gate="1" pin="P"/>
+<pinref part="USB_VCC_HOST" gate="1" pin="P"/>
+<wire x1="22.86" y1="121.92" x2="55.88" y2="121.92" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$8" class="0">
+<segment>
+<pinref part="USB_D-" gate="1" pin="P"/>
+<pinref part="USB_D-_HOST" gate="1" pin="P"/>
+<wire x1="22.86" y1="116.84" x2="55.88" y2="116.84" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$9" class="0">
+<segment>
+<pinref part="USB_D+_HOST" gate="1" pin="P"/>
+<pinref part="USB_D+" gate="1" pin="P"/>
+<wire x1="55.88" y1="111.76" x2="22.86" y2="111.76" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$10" class="0">
+<segment>
+<pinref part="USB_GND" gate="1" pin="P"/>
+<pinref part="USB_GND_HOST" gate="1" pin="P"/>
+<wire x1="22.86" y1="106.68" x2="55.88" y2="106.68" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$11" class="0">
+<segment>
+<pinref part="USB3_ORANGE_HOST" gate="1" pin="P"/>
+<pinref part="USB3_ORANGE" gate="1" pin="P"/>
+<wire x1="55.88" y1="99.06" x2="15.24" y2="99.06" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$12" class="0">
+<segment>
+<pinref part="USB3_PURPLE" gate="1" pin="P"/>
+<pinref part="USB3_PURPLE_HOST" gate="1" pin="P"/>
+<wire x1="15.24" y1="93.98" x2="55.88" y2="93.98" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$13" class="0">
+<segment>
+<pinref part="USB3_GND1_HOST" gate="1" pin="P"/>
+<pinref part="USB3_GND1" gate="1" pin="P"/>
+<wire x1="55.88" y1="88.9" x2="15.24" y2="88.9" width="0.1524" layer="91"/>
+<pinref part="USB3_GND2" gate="1" pin="P"/>
+<pinref part="USB3_GND2_HOST" gate="1" pin="P"/>
+<wire x1="15.24" y1="83.82" x2="55.88" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="88.9" x2="15.24" y2="83.82" width="0.1524" layer="91"/>
+<junction x="15.24" y="88.9"/>
+<junction x="15.24" y="83.82"/>
+<wire x1="55.88" y1="88.9" x2="55.88" y2="83.82" width="0.1524" layer="91"/>
+<junction x="55.88" y="88.9"/>
+<junction x="55.88" y="83.82"/>
+</segment>
+</net>
+<net name="N$15" class="0">
+<segment>
+<pinref part="USB3_YELLOW_HOST" gate="1" pin="P"/>
+<pinref part="USB3_YELLOW" gate="1" pin="P"/>
+<wire x1="55.88" y1="78.74" x2="15.24" y2="78.74" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$16" class="0">
+<segment>
+<pinref part="USB3_BLUE" gate="1" pin="P"/>
+<pinref part="USB3_BLUE_HOST" gate="1" pin="P"/>
+<wire x1="15.24" y1="73.66" x2="55.88" y2="73.66" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>
