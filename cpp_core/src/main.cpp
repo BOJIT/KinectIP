@@ -4,12 +4,12 @@
 	//#define hideLogs
 	#define debug_Time 30
 	#define enable_rgb
-	#define enable_depth
+	//#define enable_depth
 	#define LED_pin 100
 	#define Switch1 82
 	#define Switch2 83
 
-	#define OPENCL
+	//#define OPENGL
 //**************END***************//
 
 //************GLOBALS*************//
@@ -77,8 +77,12 @@
 		/// [listeners]
 		int types = 0;
 		
-		types |= libfreenect2::Frame::Color | libfreenect2::Frame::Ir | libfreenect2::Frame::Depth;
-
+		#ifdef enable_rgb
+			types |= libfreenect2::Frame::Color;
+		#endif
+		#ifdef enable_depth
+			types |= libfreenect2::Frame::Ir | libfreenect2::Frame::Depth;
+		#endif
 		libfreenect2::SyncMultiFrameListener listener(types);
 		libfreenect2::FrameMap frames;
 
@@ -87,7 +91,13 @@
 		/// [listeners]
 
 		/// [start]
-		if (!dev->start()) return -1;
+		#if defined enable_rgb && defined enable_depth
+			if (!dev->start()) return -1;						// start both streams
+		#elif defined enable_rgb
+			if (!dev->startStreams(1,0)) return -1;	// start RGB only
+		#else
+			if (!dev->startStreams(0,1)) return -1;	// start Depth only
+		#endif
 
 		std::cout << "device serial: " << dev->getSerialNumber() << std::endl;
 		std::cout << "device firmware: " << dev->getFirmwareVersion() << std::endl;
@@ -300,11 +310,11 @@
 		}
 		if(!pipeline)
 		{	
-			#if defined LIBFREENECT2_WITH_OPENGL_SUPPORT && defined OPENCL
+			#if defined LIBFREENECT2_WITH_OPENGL_SUPPORT && defined OPENGL
       	if(!pipeline)
         	pipeline = new libfreenect2::OpenGLPacketPipeline();
 			#else
-				std::cout << "OpenCL pipeline is not supported!" << std::endl;
+				std::cout << "OpenGL pipeline is not supported!" << std::endl;
 				pipeline = new libfreenect2::CpuPacketPipeline();
 			#endif
 		}
