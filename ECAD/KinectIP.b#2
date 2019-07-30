@@ -3,7 +3,7 @@
 <eagle version="9.2.2">
 <drawing>
 <settings>
-<setting alwaysvectorfont="no"/>
+<setting alwaysvectorfont="yes"/>
 <setting verticaltext="up"/>
 </settings>
 <grid distance="25" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="6.25" altunitdist="mil" altunit="mil"/>
@@ -155,7 +155,7 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="no" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.cGVyc29uYWw6dWUyOGRkYTQ5" projecturn="a.cGVyc29uYWw6dWUyOGRkYTQ5IzIwMTkwNzIxMjA0NzU1MDc2" f3durn="urn:adsk.wipprod:dm.lineage:51sdf3HBRlSp9b0qTDdM7A" pcbguid="17f93904-f036-442f-8767-7531df551236" lastpulledtime="2019-07-25T10:40:12Z" lastsyncedchangeguid="b4b2bdf9-d0b0-bf0c-dcf5-5cc4864d459e"/>
+<fusionsync huburn="a.cGVyc29uYWw6dWUyOGRkYTQ5" projecturn="a.cGVyc29uYWw6dWUyOGRkYTQ5IzIwMTkwNzIxMjA0NzU1MDc2" f3durn="urn:adsk.wipprod:dm.lineage:51sdf3HBRlSp9b0qTDdM7A" pcbguid="17f93904-f036-442f-8767-7531df551236" lastpulledtime="2019-07-25T10:40:12Z" lastsyncedchangeguid="9e13e522-d4f8-995f-ba86-82464dab8214"/>
 <plain>
 <wire x1="2.54" y1="69.85" x2="0" y2="67.31" width="0.254" layer="20" curve="90"/>
 <wire x1="0" y1="7.62" x2="2.54" y2="5.08" width="0.254" layer="20" curve="90"/>
@@ -202,6 +202,7 @@
 <wire x1="51.435" y1="56.515" x2="50.165" y2="57.785" width="0.1524" layer="46" curve="90"/>
 <wire x1="50.165" y1="57.785" x2="48.895" y2="56.515" width="0.1524" layer="46" curve="90"/>
 <wire x1="48.895" y1="56.515" x2="48.895" y2="48.895" width="0.1524" layer="46"/>
+<text x="22.225" y="16.51" size="2.54" layer="21">KinectIP v1.0</text>
 </plain>
 <libraries>
 <library name="Rock64" urn="urn:adsk.eagle:library:12241252">
@@ -4312,6 +4313,8 @@ design rules under a new name.</description>
 <vertex x="0" y="50.8"/>
 <vertex x="0" y="67.31" curve="-90"/>
 </polygon>
+<via x="69.215" y="3.81" extent="1-16" drill="0.35"/>
+<wire x1="75.8825" y1="4.09" x2="69.215" y2="3.81" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="N$1">
 <contactref element="PCB2" pad="P$15"/>

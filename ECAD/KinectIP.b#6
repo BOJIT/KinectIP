@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="12.5" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="6.25" altunitdist="mil" altunit="mil"/>
+<grid distance="25" unitdist="mil" unit="mil" style="lines" multiple="1" display="yes" altdistance="6.25" altunitdist="mil" altunit="mil"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="16" fill="1" visible="no" active="no"/>
@@ -155,7 +155,7 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="no" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.cGVyc29uYWw6dWUyOGRkYTQ5" projecturn="a.cGVyc29uYWw6dWUyOGRkYTQ5IzIwMTkwNzIxMjA0NzU1MDc2" f3durn="urn:adsk.wipprod:dm.lineage:51sdf3HBRlSp9b0qTDdM7A" pcbguid="17f93904-f036-442f-8767-7531df551236" lastpulledtime="2019-07-25T10:40:12Z" lastsyncedchangeguid="2ae883f0-e919-9488-7914-c054dc7bb368"/>
+<fusionsync huburn="a.cGVyc29uYWw6dWUyOGRkYTQ5" projecturn="a.cGVyc29uYWw6dWUyOGRkYTQ5IzIwMTkwNzIxMjA0NzU1MDc2" f3durn="urn:adsk.wipprod:dm.lineage:51sdf3HBRlSp9b0qTDdM7A" pcbguid="17f93904-f036-442f-8767-7531df551236" lastpulledtime="2019-07-25T10:40:12Z" lastsyncedchangeguid="b4b2bdf9-d0b0-bf0c-dcf5-5cc4864d459e"/>
 <plain>
 <wire x1="2.54" y1="69.85" x2="0" y2="67.31" width="0.254" layer="20" curve="90"/>
 <wire x1="0" y1="7.62" x2="2.54" y2="5.08" width="0.254" layer="20" curve="90"/>
@@ -177,22 +177,22 @@
 <wire x1="12.7" y1="36.83" x2="3.81" y2="36.83" width="0.254" layer="20"/>
 <wire x1="3.81" y1="36.83" x2="0" y2="33.02" width="0.254" layer="20" curve="90"/>
 <wire x1="0" y1="33.02" x2="0" y2="7.62" width="0.254" layer="20"/>
-<wire x1="5.08" y1="50.8" x2="12.7" y2="50.8" width="0.254" layer="46"/>
-<wire x1="12.7" y1="50.8" x2="13.97" y2="52.07" width="0.254" layer="46" curve="90"/>
-<wire x1="13.97" y1="52.07" x2="12.7" y2="53.34" width="0.254" layer="46" curve="90"/>
-<wire x1="12.7" y1="53.34" x2="5.08" y2="53.34" width="0.254" layer="46"/>
-<wire x1="5.08" y1="53.34" x2="3.81" y2="52.07" width="0.254" layer="46" curve="90"/>
-<wire x1="3.81" y1="52.07" x2="5.08" y2="50.8" width="0.254" layer="46" curve="90"/>
-<wire x1="5.08" y1="33.02" x2="12.7" y2="33.02" width="0.254" layer="46"/>
-<wire x1="12.7" y1="33.02" x2="13.97" y2="31.75" width="0.254" layer="46" curve="-90"/>
-<wire x1="13.97" y1="31.75" x2="12.7" y2="30.48" width="0.254" layer="46" curve="-90"/>
-<wire x1="12.7" y1="30.48" x2="5.08" y2="30.48" width="0.254" layer="46"/>
-<wire x1="5.08" y1="30.48" x2="3.81" y2="31.75" width="0.254" layer="46" curve="-90"/>
-<wire x1="3.81" y1="31.75" x2="5.08" y2="33.02" width="0.254" layer="46" curve="-90"/>
-<wire x1="68.58" y1="67.31" x2="68.58" y2="33.655" width="0.254" layer="20"/>
-<wire x1="68.58" y1="33.655" x2="67.31" y2="33.655" width="0.254" layer="20"/>
-<wire x1="67.31" y1="33.655" x2="64.77" y2="31.115" width="0.254" layer="20" curve="90"/>
-<wire x1="64.77" y1="31.115" x2="64.77" y2="17.4625" width="0.254" layer="20"/>
+<wire x1="3.81" y1="49.53" x2="11.43" y2="49.53" width="0.254" layer="46"/>
+<wire x1="11.43" y1="49.53" x2="12.7" y2="50.8" width="0.254" layer="46" curve="90"/>
+<wire x1="12.7" y1="50.8" x2="11.43" y2="52.07" width="0.254" layer="46" curve="90"/>
+<wire x1="11.43" y1="52.07" x2="3.81" y2="52.07" width="0.254" layer="46"/>
+<wire x1="3.81" y1="52.07" x2="2.54" y2="50.8" width="0.254" layer="46" curve="90"/>
+<wire x1="2.54" y1="50.8" x2="3.81" y2="49.53" width="0.254" layer="46" curve="90"/>
+<wire x1="3.81" y1="34.29" x2="11.43" y2="34.29" width="0.254" layer="46"/>
+<wire x1="11.43" y1="34.29" x2="12.7" y2="33.02" width="0.254" layer="46" curve="-90"/>
+<wire x1="12.7" y1="33.02" x2="11.43" y2="31.75" width="0.254" layer="46" curve="-90"/>
+<wire x1="11.43" y1="31.75" x2="3.81" y2="31.75" width="0.254" layer="46"/>
+<wire x1="3.81" y1="31.75" x2="2.54" y2="33.02" width="0.254" layer="46" curve="-90"/>
+<wire x1="2.54" y1="33.02" x2="3.81" y2="34.29" width="0.254" layer="46" curve="-90"/>
+<wire x1="68.58" y1="67.31" x2="68.58" y2="34.29" width="0.254" layer="20"/>
+<wire x1="68.58" y1="34.29" x2="67.31" y2="34.29" width="0.254" layer="20"/>
+<wire x1="67.31" y1="34.29" x2="64.77" y2="31.75" width="0.254" layer="20" curve="90"/>
+<wire x1="64.77" y1="31.75" x2="64.77" y2="17.4625" width="0.254" layer="20"/>
 <wire x1="68.58" y1="55.88" x2="53.34" y2="55.88" width="0.1524" layer="21"/>
 <wire x1="53.34" y1="49.53" x2="68.58" y2="49.53" width="0.1524" layer="21"/>
 <text x="57.62625" y="51.7525" size="1.778" layer="21">USB3</text>
@@ -202,6 +202,7 @@
 <wire x1="51.435" y1="56.515" x2="50.165" y2="57.785" width="0.1524" layer="46" curve="90"/>
 <wire x1="50.165" y1="57.785" x2="48.895" y2="56.515" width="0.1524" layer="46" curve="90"/>
 <wire x1="48.895" y1="56.515" x2="48.895" y2="48.895" width="0.1524" layer="46"/>
+<text x="22.225" y="16.51" size="2.54" layer="21">KinectIP v1.0</text>
 </plain>
 <libraries>
 <library name="Rock64" urn="urn:adsk.eagle:library:12241252">
@@ -4240,9 +4241,9 @@ design rules under a new name.</description>
 <vertex x="2.54" y="69.85"/>
 <vertex x="66.04" y="69.85" curve="-90"/>
 <vertex x="68.58" y="67.31"/>
-<vertex x="68.58" y="33.655"/>
-<vertex x="67.31" y="33.655" curve="90"/>
-<vertex x="64.77" y="31.115"/>
+<vertex x="68.58" y="34.29"/>
+<vertex x="67.31" y="34.29" curve="90"/>
+<vertex x="64.77" y="31.75"/>
 <vertex x="64.77" y="17.145" curve="90"/>
 <vertex x="67.31" y="14.605"/>
 <vertex x="81.28" y="14.605"/>
@@ -4263,20 +4264,20 @@ design rules under a new name.</description>
 <vertex x="0" y="67.31" curve="-90"/>
 </polygon>
 <polygon width="0.0254" layer="1" pour="cutout" isolate="0.4064">
-<vertex x="5.08" y="53.975"/>
-<vertex x="12.7" y="53.975" curve="-90"/>
-<vertex x="14.605" y="52.07" curve="-90"/>
-<vertex x="12.7" y="50.165"/>
-<vertex x="5.08" y="50.165" curve="-90"/>
-<vertex x="3.175" y="52.07" curve="-90"/>
+<vertex x="3.81" y="52.705"/>
+<vertex x="11.43" y="52.705" curve="-90"/>
+<vertex x="13.335" y="50.8" curve="-90"/>
+<vertex x="11.43" y="48.895"/>
+<vertex x="3.81" y="48.895" curve="-90"/>
+<vertex x="1.905" y="50.8" curve="-90"/>
 </polygon>
 <polygon width="0.0254" layer="1" pour="cutout" isolate="0.4064">
-<vertex x="5.08" y="33.655"/>
-<vertex x="12.7" y="33.655" curve="-90"/>
-<vertex x="14.605" y="31.75" curve="-90"/>
-<vertex x="12.7" y="29.845"/>
-<vertex x="5.08" y="29.845" curve="-90"/>
-<vertex x="3.175" y="31.75" curve="-90"/>
+<vertex x="3.81" y="34.925"/>
+<vertex x="11.43" y="34.925" curve="-90"/>
+<vertex x="13.335" y="33.02" curve="-90"/>
+<vertex x="11.43" y="31.115"/>
+<vertex x="3.81" y="31.115" curve="-90"/>
+<vertex x="1.905" y="33.02" curve="-90"/>
 </polygon>
 <polygon width="0.0254" layer="1" pour="cutout" isolate="0.4064">
 <vertex x="48.26" y="48.895"/>
@@ -4290,9 +4291,9 @@ design rules under a new name.</description>
 <vertex x="2.54" y="69.85"/>
 <vertex x="66.04" y="69.85" curve="-90"/>
 <vertex x="68.58" y="67.31"/>
-<vertex x="68.58" y="33.655"/>
-<vertex x="67.31" y="33.655" curve="90"/>
-<vertex x="64.77" y="31.115"/>
+<vertex x="68.58" y="34.29"/>
+<vertex x="67.31" y="34.29" curve="90"/>
+<vertex x="64.77" y="31.75"/>
 <vertex x="64.77" y="17.145" curve="90"/>
 <vertex x="67.31" y="14.605"/>
 <vertex x="81.28" y="14.605"/>
@@ -4489,20 +4490,20 @@ design rules under a new name.</description>
 </signal>
 <signal name="0V1">
 <polygon width="0.0254" layer="16" pour="cutout" isolate="0.4064">
-<vertex x="5.08" y="53.975"/>
-<vertex x="12.7" y="53.975" curve="-90"/>
-<vertex x="14.605" y="52.07" curve="-90"/>
-<vertex x="12.7" y="50.165"/>
-<vertex x="5.08" y="50.165" curve="-90"/>
-<vertex x="3.175" y="52.07" curve="-90"/>
+<vertex x="3.81" y="52.705"/>
+<vertex x="11.43" y="52.705" curve="-90"/>
+<vertex x="13.335" y="50.8" curve="-90"/>
+<vertex x="11.43" y="48.895"/>
+<vertex x="3.81" y="48.895" curve="-90"/>
+<vertex x="1.905" y="50.8" curve="-90"/>
 </polygon>
 <polygon width="0.0254" layer="16" pour="cutout" isolate="0.4064">
-<vertex x="5.08" y="33.655"/>
-<vertex x="12.7" y="33.655" curve="-90"/>
-<vertex x="14.605" y="31.75" curve="-90"/>
-<vertex x="12.7" y="29.845"/>
-<vertex x="5.08" y="29.845" curve="-90"/>
-<vertex x="3.175" y="31.75" curve="-90"/>
+<vertex x="3.81" y="34.925"/>
+<vertex x="11.43" y="34.925" curve="-90"/>
+<vertex x="13.335" y="33.02" curve="-90"/>
+<vertex x="11.43" y="31.115"/>
+<vertex x="3.81" y="31.115" curve="-90"/>
+<vertex x="1.905" y="33.02" curve="-90"/>
 </polygon>
 <polygon width="0.0254" layer="16" pour="cutout" isolate="0.4064">
 <vertex x="48.26" y="48.895"/>
