@@ -155,7 +155,7 @@
 <layer number="255" name="routoute" color="7" fill="1" visible="no" active="yes"/>
 </layers>
 <board>
-<fusionsync huburn="a.cGVyc29uYWw6dWUyOGRkYTQ5" projecturn="a.cGVyc29uYWw6dWUyOGRkYTQ5IzIwMTkwNzIxMjA0NzU1MDc2" f3durn="urn:adsk.wipprod:dm.lineage:51sdf3HBRlSp9b0qTDdM7A" pcbguid="17f93904-f036-442f-8767-7531df551236" lastpulledtime="2019-07-25T10:40:12Z" lastsyncedchangeguid="8560df5f-de2c-0a06-3eff-165ca01b263f"/>
+<fusionsync huburn="a.cGVyc29uYWw6dWUyOGRkYTQ5" projecturn="a.cGVyc29uYWw6dWUyOGRkYTQ5IzIwMTkwNzIxMjA0NzU1MDc2" f3durn="urn:adsk.wipprod:dm.lineage:51sdf3HBRlSp9b0qTDdM7A" pcbguid="17f93904-f036-442f-8767-7531df551236" lastpulledtime="2019-07-25T10:40:12Z" lastsyncedchangeguid="12fb596e-c395-2d70-11d8-89ac3a10042b"/>
 <plain>
 <wire x1="2.54" y1="69.85" x2="0" y2="67.31" width="0.254" layer="20" curve="90"/>
 <wire x1="0" y1="7.62" x2="2.54" y2="5.08" width="0.254" layer="20" curve="90"/>
@@ -193,18 +193,6 @@
 <wire x1="69.215" y1="33.655" x2="67.31" y2="33.655" width="0.254" layer="20"/>
 <wire x1="67.31" y1="33.655" x2="64.77" y2="31.115" width="0.254" layer="20" curve="90"/>
 <wire x1="64.77" y1="31.115" x2="64.77" y2="17.4625" width="0.254" layer="20"/>
-<wire x1="58.42" y1="59.055" x2="57.15" y2="57.785" width="0.1524" layer="46" curve="90"/>
-<wire x1="57.15" y1="57.785" x2="58.42" y2="56.515" width="0.1524" layer="46" curve="90"/>
-<wire x1="58.42" y1="56.515" x2="63.5" y2="56.515" width="0.1524" layer="46"/>
-<wire x1="63.5" y1="56.515" x2="64.77" y2="57.785" width="0.1524" layer="46" curve="90"/>
-<wire x1="64.77" y1="57.785" x2="63.5" y2="59.055" width="0.1524" layer="46" curve="90"/>
-<wire x1="63.5" y1="59.055" x2="58.42" y2="59.055" width="0.1524" layer="46"/>
-<wire x1="58.42" y1="48.895" x2="57.15" y2="47.625" width="0.1524" layer="46" curve="90"/>
-<wire x1="57.15" y1="47.625" x2="58.42" y2="46.355" width="0.1524" layer="46" curve="90"/>
-<wire x1="58.42" y1="46.355" x2="63.5" y2="46.355" width="0.1524" layer="46"/>
-<wire x1="63.5" y1="46.355" x2="64.77" y2="47.625" width="0.1524" layer="46" curve="90"/>
-<wire x1="64.77" y1="47.625" x2="63.5" y2="48.895" width="0.1524" layer="46" curve="90"/>
-<wire x1="63.5" y1="48.895" x2="58.42" y2="48.895" width="0.1524" layer="46"/>
 <wire x1="68.58" y1="55.88" x2="53.34" y2="55.88" width="0.1524" layer="21"/>
 <wire x1="53.34" y1="49.53" x2="68.58" y2="49.53" width="0.1524" layer="21"/>
 <text x="57.62625" y="51.7525" size="1.778" layer="21">USB3</text>
@@ -1739,6 +1727,21 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <text x="0" y="0" size="0.0254" layer="27">&gt;VALUE</text>
 <text x="-0.8" y="-2.4" size="1.27" layer="25" rot="R90">&gt;NAME</text>
 </package>
+<package name="1,6/0,8" urn="urn:adsk.eagle:footprint:30809/1" library_version="2">
+<description>&lt;b&gt;THROUGH-HOLE PAD&lt;/b&gt;</description>
+<wire x1="-0.762" y1="0.762" x2="-0.508" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="-0.762" y1="0.762" x2="-0.762" y2="0.508" width="0.1524" layer="21"/>
+<wire x1="0.762" y1="0.762" x2="0.762" y2="0.508" width="0.1524" layer="21"/>
+<wire x1="0.762" y1="0.762" x2="0.508" y2="0.762" width="0.1524" layer="21"/>
+<wire x1="0.762" y1="-0.508" x2="0.762" y2="-0.762" width="0.1524" layer="21"/>
+<wire x1="0.762" y1="-0.762" x2="0.508" y2="-0.762" width="0.1524" layer="21"/>
+<wire x1="-0.508" y1="-0.762" x2="-0.762" y2="-0.762" width="0.1524" layer="21"/>
+<wire x1="-0.762" y1="-0.762" x2="-0.762" y2="-0.508" width="0.1524" layer="21"/>
+<circle x="0" y="0" radius="0.635" width="0.1524" layer="51"/>
+<pad name="1" x="0" y="0" drill="0.8128" diameter="1.6002" shape="octagon"/>
+<text x="-0.762" y="1.016" size="1.27" layer="25" ratio="10">&gt;NAME</text>
+<text x="0" y="0.6" size="0.0254" layer="27">&gt;VALUE</text>
+</package>
 </packages>
 <packages3d>
 <package3d name="SMD2,54-5,08" urn="urn:adsk.eagle:package:30841/1" type="box" library_version="1">
@@ -1751,6 +1754,12 @@ Comments, suggestions and bug reports please send to: &lt;b&gt;&lt;a href="mailt
 <description>SMD PAD</description>
 <packageinstances>
 <packageinstance name="SMD1,27-2,54"/>
+</packageinstances>
+</package3d>
+<package3d name="1,6/0,8" urn="urn:adsk.eagle:package:30830/1" type="box" library_version="2">
+<description>THROUGH-HOLE PAD</description>
+<packageinstances>
+<packageinstance name="1,6/0,8"/>
 </packageinstances>
 </package3d>
 </packages3d>
@@ -4172,6 +4181,22 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="41.275" y="48.895" size="0.0254" layer="28" rot="MR270"/>
 </element>
 <element name="U$1" library="BOJIT Logos" library_urn="urn:adsk.eagle:library:12408484" package="BOJIT_LARGE_COPPER" package3d_urn="urn:adsk.eagle:package:12408533/2" value="BOJIT_COPPER" x="62.23" y="6.985" smashed="yes"/>
+<element name="PAD1" library="wirepad" library_urn="urn:adsk.eagle:library:412" package="1,6/0,8" package3d_urn="urn:adsk.eagle:package:30830/1" value="" x="66.04" y="57.15" smashed="yes">
+<attribute name="POPULARITY" value="15" x="66.04" y="57.15" size="0.8128" layer="27" display="off"/>
+<attribute name="VALUE" x="66.04" y="57.75" size="0.0254" layer="27"/>
+</element>
+<element name="PAD2" library="wirepad" library_urn="urn:adsk.eagle:library:412" package="1,6/0,8" package3d_urn="urn:adsk.eagle:package:30830/1" value="" x="66.04" y="48.26" smashed="yes">
+<attribute name="POPULARITY" value="15" x="66.04" y="48.26" size="0.8128" layer="27" display="off"/>
+<attribute name="VALUE" x="66.04" y="48.86" size="0.0254" layer="27"/>
+</element>
+<element name="PAD3" library="wirepad" library_urn="urn:adsk.eagle:library:412" package="1,6/0,8" package3d_urn="urn:adsk.eagle:package:30830/1" value="" x="55.88" y="57.15" smashed="yes">
+<attribute name="POPULARITY" value="15" x="55.88" y="57.15" size="0.8128" layer="27" display="off"/>
+<attribute name="VALUE" x="55.88" y="57.75" size="0.0254" layer="27"/>
+</element>
+<element name="PAD4" library="wirepad" library_urn="urn:adsk.eagle:library:412" package="1,6/0,8" package3d_urn="urn:adsk.eagle:package:30830/1" value="" x="55.88" y="48.26" smashed="yes">
+<attribute name="POPULARITY" value="15" x="55.88" y="48.26" size="0.8128" layer="27" display="off"/>
+<attribute name="VALUE" x="55.88" y="48.86" size="0.0254" layer="27"/>
+</element>
 </elements>
 <signals>
 <signal name="+3V3">
@@ -4252,22 +4277,6 @@ design rules under a new name.</description>
 <vertex x="12.7" y="29.845"/>
 <vertex x="5.08" y="29.845" curve="-90"/>
 <vertex x="3.175" y="31.75" curve="-90"/>
-</polygon>
-<polygon width="0.0254" layer="1" pour="cutout" isolate="0.4064">
-<vertex x="58.42" y="59.69"/>
-<vertex x="63.5" y="59.69" curve="-90"/>
-<vertex x="65.405" y="57.785" curve="-90"/>
-<vertex x="63.5" y="55.88"/>
-<vertex x="58.42" y="55.88" curve="-90"/>
-<vertex x="56.515" y="57.785" curve="-90"/>
-</polygon>
-<polygon width="0.0254" layer="1" pour="cutout" isolate="0.4064">
-<vertex x="58.42" y="49.53"/>
-<vertex x="63.5" y="49.53" curve="-90"/>
-<vertex x="65.405" y="47.625" curve="-90"/>
-<vertex x="63.5" y="45.72"/>
-<vertex x="58.42" y="45.72" curve="-90"/>
-<vertex x="56.515" y="47.625" curve="-90"/>
 </polygon>
 <polygon width="0.0254" layer="1" pour="cutout" isolate="0.4064">
 <vertex x="48.26" y="48.895"/>
@@ -4494,22 +4503,6 @@ design rules under a new name.</description>
 <vertex x="12.7" y="29.845"/>
 <vertex x="5.08" y="29.845" curve="-90"/>
 <vertex x="3.175" y="31.75" curve="-90"/>
-</polygon>
-<polygon width="0.0254" layer="16" pour="cutout" isolate="0.4064">
-<vertex x="58.42" y="59.69"/>
-<vertex x="63.5" y="59.69" curve="-90"/>
-<vertex x="65.405" y="57.785" curve="-90"/>
-<vertex x="63.5" y="55.88"/>
-<vertex x="58.42" y="55.88" curve="-90"/>
-<vertex x="56.515" y="57.785" curve="-90"/>
-</polygon>
-<polygon width="0.0254" layer="16" pour="cutout" isolate="0.4064">
-<vertex x="58.42" y="49.53"/>
-<vertex x="63.5" y="49.53" curve="-90"/>
-<vertex x="65.405" y="47.625" curve="-90"/>
-<vertex x="63.5" y="45.72"/>
-<vertex x="58.42" y="45.72" curve="-90"/>
-<vertex x="56.515" y="47.625" curve="-90"/>
 </polygon>
 <polygon width="0.0254" layer="16" pour="cutout" isolate="0.4064">
 <vertex x="48.26" y="48.895"/>

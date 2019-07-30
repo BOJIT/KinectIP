@@ -9,7 +9,7 @@
 	#define Switch1 82
 	#define Switch2 83
 
-	//#define OPENGL
+	#define OPENGL
 //**************END***************//
 
 //************GLOBALS*************//
@@ -21,6 +21,9 @@
 	libfreenect2::Freenect2 freenect2;
 	libfreenect2::Freenect2Device *dev = 0;
 	libfreenect2::PacketPipeline *pipeline = 0;
+
+	// frame buffer pointers:
+	void* p_frame_buffers[2];
 //**************END***************//
 
 //*********SIGNAL HANDLERS********//
@@ -149,20 +152,8 @@
 
 		while(protonect_shutdown == false) {
 			// indefinite loop goes here ...
-			/* printf("flag");
-			if (!listener.waitForNewFrame(frames, 10*1000)) // 10 seconds
-			{
-				std::cout << "timeout! Device Not Responding" << std::endl;
-				return -1;
-			}
-			libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
-			//libfreenect2::Frame *ir = frames[libfreenect2::Frame::Ir];
-			//libfreenect2::Frame *depth = frames[libfreenect2::Frame::Depth];
 
-			NDI_frame.p_data = &rgb->data[0];						// pointer to image data
-			*/		
-			// Submit frame. Note that this call will be clocked so that we end up submitting at the desired framerate.
-			NDIlib_send_send_video_v2(sender[1], &NDI_frame);	
+			NDIlib_send_send_video_async_v2(sender[0], &NDI_frame);	
 			listener.release(frames);
 			//printf("flag");
 
@@ -177,6 +168,7 @@
 		// Destroy all open NDI senders
 		for(int i=0; i<4; i++) {
 			if(sender[i] != 0) {
+				NDIlib_send_send_video_async_v2(sender[i], NULL);
 				NDIlib_send_destroy(sender[i]);
 			}	
 		}
