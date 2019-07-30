@@ -144,9 +144,9 @@
 		NDI_frame.p_data = &rgb->data[0];						// pointer to image data
 		NDI_frame.line_stride_in_bytes = rgb->width * 4;
 
-		void* p_frame_buffers[2] = { malloc(1920 * 1080 * 4), malloc(1920 * 1080 * 4) };
+		listener.release(frames);
 
-		int idx = 0;	// frame counter for debugging
+		//int idx = 0;	// frame counter for debugging
 
 		std::cout << "--------Streams Initialised--------" << std::endl;
 		// if debugging is enabled, the while loop will break after the specified period
@@ -162,11 +162,15 @@
 			}
 			else
 			{
-				//p_frame_buffers[idx & 1] = &rgb->data[0];
-				NDI_frame.p_data = (uint8_t*)p_frame_buffers[idx & 1];
-				NDIlib_send_send_video_async_v2(sender[0], &NDI_frame);
+				if (!listener.waitForNewFrame(frames, 10*1000)) // 10 seconds
+				{
+					std::cout << "timeout! Device Not Responding" << std::endl;
+					return -1;
+				}
+				libfreenect2::Frame *rgb = frames[libfreenect2::Frame::Color];
+				NDI_frame.p_data = &rgb->data[0];	
+				NDIlib_send_send_video_v2(sender[0], &NDI_frame);
 				listener.release(frames);
-				idx++;
 			}
 			// ... and ends here!
 			#ifdef debug_Time
@@ -176,13 +180,10 @@
 		// Shutdown Routine
 		std::cout << "-------Destroying Senders--------" << std::endl;
 
-		free(p_frame_buffers[0]);
-		free(p_frame_buffers[1]);
-
 		// Destroy all open NDI senders
 		for(int i=0; i<4; i++) {
 			if(sender[i] != 0) {
-				NDIlib_send_send_video_async_v2(sender[i], NULL);
+				NDIlib_send_send_video_v2(sender[i], NULL);
 				NDIlib_send_destroy(sender[i]);
 			}	
 		}
