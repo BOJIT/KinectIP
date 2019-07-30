@@ -9,7 +9,7 @@
 	#define Switch1 82
 	#define Switch2 83
 
-	#define OPENGL
+	//#define OPENGL
 //**************END***************//
 
 //************GLOBALS*************//
@@ -131,12 +131,6 @@
 				sender[i] = loadStreams(source[i]);
 			}
 		}
-		std::cout << "--------Streams Initialised--------" << std::endl;
-
-		// if debugging is enabled, the while loop will break after the specified period
-		#ifdef debug_Time
-			std::chrono::system_clock::time_point debug_Period = std::chrono::system_clock::now();
-		#endif
 
 		NDIlib_video_frame_v2_t NDI_frame = createFrame(source[1], false);			// collect metadata with initial frame
 		if (!listener.waitForNewFrame(frames, 10*1000)) // 10 seconds
@@ -150,13 +144,30 @@
 		NDI_frame.p_data = &rgb->data[0];						// pointer to image data
 		NDI_frame.line_stride_in_bytes = rgb->width * 4;
 
+		void* p_frame_buffers[2] = { malloc(1920 * 1080 * 4), malloc(1920 * 1080 * 4) };
+
+		int idx = 0;	// frame counter for debugging
+
+		std::cout << "--------Streams Initialised--------" << std::endl;
+		// if debugging is enabled, the while loop will break after the specified period
+		#ifdef debug_Time
+			std::chrono::system_clock::time_point debug_Period = std::chrono::system_clock::now();
+		#endif
+
 		while(protonect_shutdown == false) {
-			// indefinite loop goes here ...
-
-			NDIlib_send_send_video_async_v2(sender[0], &NDI_frame);	
-			listener.release(frames);
-			//printf("flag");
-
+			// indefinite loop starts here ...
+			if (0) //if (!NDIlib_send_get_no_connections(sender[0], 10000))
+			{	// Display status
+				printf("No current connections, so no rendering needed.\n");
+			}
+			else
+			{
+				//p_frame_buffers[idx & 1] = &rgb->data[0];
+				NDI_frame.p_data = (uint8_t*)p_frame_buffers[idx & 1];
+				NDIlib_send_send_video_async_v2(sender[0], &NDI_frame);
+				listener.release(frames);
+				idx++;
+			}
 			// ... and ends here!
 			#ifdef debug_Time
 				if(std::chrono::system_clock::now() >= debug_Period + std::chrono::seconds(debug_Time)) break;
@@ -164,6 +175,9 @@
 		}
 		// Shutdown Routine
 		std::cout << "-------Destroying Senders--------" << std::endl;
+
+		free(p_frame_buffers[0]);
+		free(p_frame_buffers[1]);
 
 		// Destroy all open NDI senders
 		for(int i=0; i<4; i++) {
