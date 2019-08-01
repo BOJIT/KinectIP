@@ -37,5 +37,11 @@ run the following build scripts from the 'KinectIP' directory of the git reposit
 
   ./deploy_scripts/install_full.sh
 
+Note: remote filesystem must be mounted before the script can be run. If on native Linux, SSHFS can be used.
+For WSL users, mount the root directory using SFTP Net Drive (https://www.nsoftware.com/sftp/drive/download.aspx)
+in Windows, then run [sudo mount -t drvfs Z: /mnt/rock64] in WSL
+
+In future revisions the mounting process will be automatic
+
 
 
