@@ -29,8 +29,6 @@ chmod 775 /var/www
 
 service lighttpd force-reload
 
-END_SESSION
-
 if [ "$1" != "" ]; then
   if [ "$1" = "-no_netdata" ]; then
     echo "Skipping Netdata installation"
@@ -54,3 +52,5 @@ else
   sudo ./netdata-installer.sh
   cd
 fi
+
+END_SESSION
