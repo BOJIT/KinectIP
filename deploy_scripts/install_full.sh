@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# tested on image: stretch-minimal-rock64-0.8.3-1141-arm64.img.xz
+
+# note for scripts to work fully automatically please ensure that you have key-based ssh authentification.
+
+IP_ADDRESS="192.168.1.150"  # only used if hostname resolution does not work
+HOSTNAME="KinectIP"
+
+ssh root@$HOSTNAME << END_SESSION
+
+  apt-get update && apt-get upgrade -y
+
+  apt-get install build-essential cmake pkg-config -y
+
+  exit
+
+END_SESSION
+
+./deploy_scripts/install_webserver.sh
+
+exit
