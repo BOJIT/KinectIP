@@ -54,3 +54,5 @@ else
 fi
 
 END_SESSION
+
+exit

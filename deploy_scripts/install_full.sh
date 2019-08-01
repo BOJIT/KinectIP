@@ -27,4 +27,12 @@ END_SESSION
 
 ./deploy_scripts/install_webserver.sh $1
 
+# copy test images to remote directory
+scp -r ./resources/img root@KinectIP:/home/rock64/
+
+# copy pre-compiled NDI libraries to remote local libs
+scp -r ./resources/NDI-aarch64-libs/* root@KinectIP:/usr/local/lib/NDI/
+
+./deploy_scripts/install_libfreenect2.sh
+
 exit
