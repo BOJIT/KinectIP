@@ -30,3 +30,27 @@ chmod 775 /var/www
 service lighttpd force-reload
 
 END_SESSION
+
+if [ "$1" != "" ]; then
+  if [ "$1" = "-no_netdata" ]; then
+    echo "Skipping Netdata installation"
+  else
+    echo "Invalid Argument: installing Netdata anyway"
+    sleep 2
+    echo "----INSTALLING NETDATA----"
+    curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh -i netdata
+    cd /usr/src
+    git clone https://github.com/firehol/netdata.git --depth=1
+    cd netdata
+    sudo ./netdata-installer.sh
+    cd
+  fi
+else
+  echo "----INSTALLING NETDATA----"
+  curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh -i netdata
+  cd /usr/src
+  git clone https://github.com/firehol/netdata.git --depth=1
+  cd netdata
+  sudo ./netdata-installer.sh
+  cd
+fi

@@ -7,6 +7,10 @@
 IP_ADDRESS="192.168.1.150"  # only used if hostname resolution does not work
 HOSTNAME="KinectIP"
 
+echo "Installing KinectIP from Source Code:"
+echo "Arguments: -nonetdata | skips netdata installation"
+sleep 2
+
 ssh root@$HOSTNAME << END_SESSION
 
   apt-get update && apt-get upgrade -y
@@ -17,6 +21,6 @@ ssh root@$HOSTNAME << END_SESSION
 
 END_SESSION
 
-./deploy_scripts/install_webserver.sh
+./deploy_scripts/install_webserver.sh $1
 
 exit
