@@ -31,6 +31,7 @@ ssh root@$HOSTNAME << END_SESSION
   make
   make install
   cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/
+  rm -rf /home/rock64/libfreenect2
 
 END_SESSION
 
