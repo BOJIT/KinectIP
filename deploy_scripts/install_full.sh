@@ -31,7 +31,7 @@ END_SESSION
 scp -r ./resources/img root@KinectIP:/home/rock64/
 
 # copy pre-compiled NDI libraries to remote local libs
-scp -r ./resources/NDI-aarch64-libs/* root@KinectIP:/usr/local/lib/NDI/
+scp -r ./resources/NDI root@KinectIP:/usr/local/lib/
 
 ./deploy_scripts/install_libfreenect2.sh
 
