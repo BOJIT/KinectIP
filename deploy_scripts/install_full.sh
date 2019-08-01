@@ -21,6 +21,8 @@ ssh root@$HOSTNAME << END_SESSION
 
   sudo apt-get install autoconf -y
 
+  sudo apt-get install libavahi-client-dev -y
+
   exit
 
 END_SESSION

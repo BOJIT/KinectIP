@@ -30,6 +30,6 @@ find_library(LIBC NAMES "libc.so.6" PATHS ${CMAKE_FIND_ROOT_PATH}/lib/${CMAKE_SY
 target_link_libraries( ${CMAKE_PROJECT_NAME}.${CMAKE_SYSTEM_PROCESSOR}.${CMAKE_SYSTEM_NAME} ${NDI} ${AVAHI_COMMON} ${AVAHI_CLIENT} ${DBUS} ${LIBC})
 
 # Kinect_Lib
-find_library(FREENECT2 NAMES "freenect2" PATHS ${CMAKE_FIND_ROOT_PATH}/usr/local/lib/freenect2)
+find_library(FREENECT2 NAMES "freenect2" PATHS ${CMAKE_FIND_ROOT_PATH}/usr/local/lib/freenect2/lib)
 
 target_link_libraries( ${CMAKE_PROJECT_NAME}.${CMAKE_SYSTEM_PROCESSOR}.${CMAKE_SYSTEM_NAME} ${FREENECT2} )
