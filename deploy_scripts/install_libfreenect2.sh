@@ -33,3 +33,5 @@ ssh root@$HOSTNAME << END_SESSION
   cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/
 
 END_SESSION
+
+exit

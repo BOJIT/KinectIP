@@ -35,4 +35,13 @@ scp -r ./resources/NDI root@KinectIP:/usr/local/lib/
 
 ./deploy_scripts/install_libfreenect2.sh
 
+cd ./cpp_core/build/remote
+cmake -DCMAKE_TOOLCHAIN_FILE=../../aarch64.cmake ../../
+make
+cd ../..
+echo "--------FILE TRANSFER--------"
+cd ./bin/aarch64_Linux
+scp KinectIP.aarch64.Linux root@$HOSTNAME:/home/rock64/
+cd ../../..
+
 exit
