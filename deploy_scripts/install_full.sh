@@ -8,7 +8,7 @@ IP_ADDRESS="192.168.1.150"  # only used if hostname resolution does not work
 HOSTNAME="KinectIP"
 
 echo "Installing KinectIP from Source Code:"
-echo "Arguments: -nonetdata | skips netdata installation"
+echo "Arguments: -no_netdata | skips netdata installation"
 sleep 2
 
 ssh root@$HOSTNAME << END_SESSION
