@@ -17,6 +17,10 @@ ssh root@$HOSTNAME << END_SESSION
 
   apt-get install build-essential cmake pkg-config -y
 
+  sudo apt-get install autotools-dev -y
+
+  sudo apt-get install autoconf -y
+
   exit
 
 END_SESSION

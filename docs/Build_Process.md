@@ -17,6 +17,8 @@ INSTRUCTIONS: (run on local computer terminal)
 - passwd # change rock64 user password for increased security
 - sudo passwd # this enables the root account (this password can be as complex as you want, because we will be setting up ssh key authentification instead.)
 - sudo reboot
+-----------------
+- ssh rock64@KinectIP
 - sudo nano /etc/ssh/sshd_config
 - # change line #permit root login to 'yes' and uncomment it (temporarily)
 - sudo service ssh restart
@@ -26,7 +28,7 @@ INSTRUCTIONS: (run on local computer terminal)
 - ssh root@KinectIP
 - nano /etc/ssh/sshd_config
 - # change line #permit root login to 'prohibit-password'
-- sudo service ssh restart
+- service ssh restart
 - exit
 
 You can now execute build scripts on your local computer which cross-compile and transfer files to the remote computer!
