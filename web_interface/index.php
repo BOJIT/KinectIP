@@ -39,6 +39,12 @@
 
 <!--PHP Functions-->
 <?php
+  // Constants:
+  define("UPDATE_SETTINGS", "0");
+  define("RESTART_SYSTEM", "1");
+  define("STREAM_ACTIVE", "2");
+  define("TEST_PATTERNS", "3");
+
   function createDefaults() {
     // function only called if defaults file is not present - this way users can
     // change default settings without requiring the source-code
@@ -91,7 +97,7 @@
     return $parsed_field;
   }
 
-  function InitialiseSHMEM() {
+  function WriteSHMEM($Index, $Value) {
         //----- SHARED MEMORY CONFIGURATION -----
     $SEMAPHORE_KEY = 291623581;   			//Semaphore unique key (MAKE DIFFERENT TO C++ KEY)
     $SHARED_MEMORY_KEY = 672213396;   	//Shared memory unique key (SAME AS C++ KEY)
@@ -123,41 +129,13 @@
     }
     else
     {
-      //--------------------------------------------
-      //----- READ AND WRITE THE SHARED MEMORY -----
-      //--------------------------------------------
-      echo "Shared memory size: ".shmop_size($shared_memory_id)." bytes<br />";
-
-      //----- READ FROM THE SHARED MEMORY -----
-      $shared_memory_string = shmop_read($shared_memory_id, 0, 8);				//Shared memory ID, Start Index, Number of bytes to read
-      if($shared_memory_string == FALSE) 
-      {
-          echo "Failed to read shared memory";
-          sem_release($semaphore_id);
-          exit;
-      }
-
-      $shared_memory_array = array_slice(unpack('C*', "\0".$shared_memory_string), 1);
-
-      echo "Shared memory bytes: ";
-      for($i = 0; $i < 8; $i++)
-      {
-        echo $shared_memory_array[$i] . ", ";
-      }
-      echo "<br />";
-
-      //----- WRITE TO THE SHARED MEMORY -----
-      if(isset($_REQUEST['shutdown']))			//Include "?shutdown" at the end of the url to write these bytes which causes the C application to exit
-      {
-        //The array to write
-        $shared_memory_array = array(30, 255);  // testing purposes
-        
-        //Convert the array of byte values to a byte string
-        $shared_memory_string = call_user_func_array(pack, array_merge(array("C*"), $shared_memory_array));
-        echo "Writing bytes: $shared_memory_string<br />";
-        shmop_write($shared_memory_id, $shared_memory_string, 8);			//Shared memory id, string to write, Index to start writing from
-                                                                      //Note that a trailing null 0x00 byte is not written, just the byte values / characters, so in this example just 2 bytes are written.
-      }
+      //The array to write
+      $shared_memory_array = array($Value);
+      
+      //Convert the array of byte values to a byte string
+      $shared_memory_string = call_user_func_array(pack, array_merge(array("C*"), $shared_memory_array));
+      shmop_write($shared_memory_id, $shared_memory_string, $Index);			//Shared memory id, string to write, Index to start writing from
+                                                                    //Note that a trailing null 0x00 byte is not written, just the byte values / characters, so in this example just 2 bytes are written.
                                                                   
       //Detach from the shared memory
       shmop_close($shared_memory_id);
@@ -221,12 +199,7 @@
     if (!sem_release($semaphore_id))				//Must be called after sem_acquire() so that another process can acquire the semaphore
         echo "Failed to release $semaphore_id semaphore<br />";
   }
-
   //End of Functions
-
-  //InitialiseSHMEM();   //Called to get initial status
-
-  echo(ReadSHMEM(2));
 
   createDefaults();   //If no defaults.config is provided, one will be generated
 

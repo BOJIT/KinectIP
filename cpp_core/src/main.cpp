@@ -2,7 +2,7 @@
 
 //**********PREPROCESSOR**********//
 	//#define hideLogs
-	#define debug_Time 30
+	#define debug_Time 20
 	#define enable_rgb
 	//#define enable_depth
 	#define LED_pin 100
@@ -182,7 +182,7 @@
 				listener.release(frames);
 			}
 			if(ReadSHMEM(RESTART_SYSTEM) != 0) {
-				break;
+				//break;
 			}
 			// ... and ends here!
 			#ifdef debug_Time
