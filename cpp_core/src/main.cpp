@@ -146,7 +146,7 @@
 
 		listener.release(frames);
 
-		//int idx = 0;	// frame counter for debugging
+		WriteSHMEM(STREAM_ACTIVE, 255);
 
 		std::cout << "--------Streams Initialised--------" << std::endl;
 		// if debugging is enabled, the while loop will break after the specified period
@@ -156,24 +156,9 @@
 
 		while(protonect_shutdown == false) {
 			// indefinite loop starts here ...
-			if (0) //if (!NDIlib_send_get_no_connections(sender[0], 10000))
-			{	// Display status
-				printf("No current connections, so no rendering needed.\n");
-			}
+			if (!NDIlib_send_get_no_connections(sender[0], 10000)) {}
 			else
 			{	
-				//----- SEMAPHORE GET ACCESS -----
-				if (!semaphore1_get_access())
-					exit(EXIT_FAILURE);
-				
-				//----- ACCESS THE SHARED MEMORY -----
-				//Just an example of reading 2 bytes values passed from the php web page that will cause us to exit
-				if ((shared_memory1->some_data[8] == 30) && (shared_memory1->some_data[9] = 255))
-					break;
-				
-				//----- SEMAPHORE RELEASE ACCESS -----
-				if (!semaphore1_release_access())
-					exit(EXIT_FAILURE);
 				if (!listener.waitForNewFrame(frames, 10*1000)) // 10 seconds
 				{
 					std::cout << "timeout! Device Not Responding" << std::endl;
@@ -184,6 +169,9 @@
 				NDIlib_send_send_video_v2(sender[0], &NDI_frame);
 				listener.release(frames);
 			}
+			if(ReadSHMEM(RESTART_SYSTEM) != 0) {
+				break;
+			}
 			// ... and ends here!
 			#ifdef debug_Time
 				if(std::chrono::system_clock::now() >= debug_Period + std::chrono::seconds(debug_Time)) break;
@@ -191,6 +179,8 @@
 		}
 		// Shutdown Routine
 		std::cout << "-------Destroying Senders--------" << std::endl;
+
+		WriteSHMEM(STREAM_ACTIVE, 0);
 
 		// Destroy all open NDI senders
 		for(int i=0; i<4; i++) {
@@ -331,6 +321,10 @@
 		}
 		return NDI_video_frame;
 	}
+
+	int Update_Settings() {
+		printf("flag\n");
+	}
 //**************END***************//
 
 //********KINECT FUNCTIONS********//
@@ -398,8 +392,6 @@
 
 	void initialiseSHMEM()
 	{
-		//..... Do init stuff ....
-
 		//-----------------------------------------------
 		//----- CREATE SHARED MEMORY WITH SEMAPHORE -----
 		//-----------------------------------------------
@@ -445,7 +437,7 @@
 			fprintf(stderr, "Shared memory shmat() failed\n");
 			exit(EXIT_FAILURE);
 		}
-		printf("Shared memory attached");
+		printf("Shared memory attached\n");
 
 		//Assign the shared_memory segment
 		shared_memory1 = (struct shared_memory1_struct *)shared_memory1_pointer;
@@ -458,32 +450,19 @@
 		//----- WRITE SHARED MEMORY -----
 		unsigned int Index;
 		for (Index = 0; Index < sizeof(struct shared_memory1_struct); Index++)
-			shared_memory1->some_data[Index] = 0x00;
+			shared_memory1->shared_bytes[Index] = 0x00;
 
 		//Write initial values
-		shared_memory1->some_data[0] = 'H';
-		shared_memory1->some_data[1] = 'e';
-		shared_memory1->some_data[2] = 'l';
-		shared_memory1->some_data[3] = 'l';
-		shared_memory1->some_data[4] = 'o';
-		shared_memory1->some_data[5] = 0x00;
-		shared_memory1->some_data[6] = 1;
-		shared_memory1->some_data[7] = 255;
-		shared_memory1->some_data[8] = 0;
-		shared_memory1->some_data[9] = 0;
-
-		printf("stored=%s\n", shared_memory1->some_data);
+		shared_memory1->shared_bytes[UPDATE_SETTINGS] = 0;
+		shared_memory1->shared_bytes[RESTART_SYSTEM] = 0;
+		shared_memory1->shared_bytes[STREAM_ACTIVE] = 0;
+		shared_memory1->shared_bytes[TEST_PATTERNS] = 0;
 
 		//----- SEMAPHORE RELEASE ACCESS -----
 		if (!semaphore1_release_access())
 			exit(EXIT_FAILURE);
 	}
 
-	//***********************************************************
-	//***********************************************************
-	//********** WAIT IF NECESSARY THEN LOCK SEMAPHORE **********
-	//***********************************************************
-	//***********************************************************
 	//Stall if another process has the semaphore, then assert it to stop another process taking it
 	static int semaphore1_get_access(void)
 	{
@@ -499,11 +478,6 @@
 		return(1);
 	}
 
-	//***************************************
-	//***************************************
-	//********** RELEASE SEMAPHORE **********
-	//***************************************
-	//***************************************
 	//Release the semaphore and allow another process to take it
 	static int semaphore1_release_access(void)
 	{
@@ -519,4 +493,34 @@
 		return(1);
 	}
 
+	int ReadSHMEM(unsigned int Index) {
+			//----- SEMAPHORE GET ACCESS -----
+			uint8_t Value;
+			if (!semaphore1_get_access())
+				exit(EXIT_FAILURE);
+			
+			//----- ACCESS THE SHARED MEMORY -----
+			Value = shared_memory1->shared_bytes[Index];
+			
+			//----- SEMAPHORE RELEASE ACCESS -----
+			if (!semaphore1_release_access())
+				exit(EXIT_FAILURE);
+			
+			return Value;
+	}
+
+	void WriteSHMEM(unsigned int Index, uint8_t Value) {
+				//----- SEMAPHORE GET ACCESS -----
+		if (!semaphore1_get_access())
+			exit(EXIT_FAILURE);
+
+		//----- WRITE SHARED MEMORY -----
+
+		//Write initial values
+		shared_memory1->shared_bytes[Index] = Value;
+
+		//----- SEMAPHORE RELEASE ACCESS -----
+		if (!semaphore1_release_access())
+			exit(EXIT_FAILURE);
+	}
 //**************END***************//

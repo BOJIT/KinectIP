@@ -34,6 +34,10 @@
   NDIlib_video_frame_v2_t createFrame(const char stream_name[], bool testImg);  // gets basic frame information from PHP config file
 
   void initialiseSHMEM(); //Shared Memory Initialise Declaration 
+  	
+  int ReadSHMEM(unsigned int Index);
+	
+	void WriteSHMEM(unsigned int Index, uint8_t Value);
 
   //----- SEMAPHORE -----
   //On linux systems this union is probably already defined in the included sys/sem.h, but if not use this default basic definition:
@@ -45,7 +49,7 @@
 
   //----- SHARED MEMORY -----
   struct shared_memory1_struct {
-    char some_data[1024];
+    char shared_bytes[8];
   };
   #define	SEMAPHORE_KEY			291623581  			//Semaphore unique key (MAKE DIFFERENT TO PHP KEY)
   #define	SHARED_MEMORY_KEY 		672213396   		//Shared memory unique key (SAME AS PHP KEY)
@@ -57,5 +61,11 @@
   void *shared_memory1_pointer = (void *)0;
   struct shared_memory1_struct *shared_memory1;
   int shared_memory1_id;
+
+  //----- SHARED MEMORY INDEX -----
+  #define UPDATE_SETTINGS 0
+  #define RESTART_SYSTEM 1
+  #define STREAM_ACTIVE 2
+  #define TEST_PATTERNS 3
 
 #endif

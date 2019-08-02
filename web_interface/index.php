@@ -128,9 +128,8 @@
       //--------------------------------------------
       echo "Shared memory size: ".shmop_size($shared_memory_id)." bytes<br />";
 
-
       //----- READ FROM THE SHARED MEMORY -----
-      $shared_memory_string = shmop_read($shared_memory_id, 0, 10);				//Shared memory ID, Start Index, Number of bytes to read
+      $shared_memory_string = shmop_read($shared_memory_id, 0, 8);				//Shared memory ID, Start Index, Number of bytes to read
       if($shared_memory_string == FALSE) 
       {
           echo "Failed to read shared memory";
@@ -138,20 +137,14 @@
           exit;
       }
 
-      //Display as a string
-      echo "Shared memory string: $shared_memory_string <br />";
-
-      //CONVERT TO AN ARRAY OF BYTE VALUES
       $shared_memory_array = array_slice(unpack('C*', "\0".$shared_memory_string), 1);
 
       echo "Shared memory bytes: ";
-      for($i = 0; $i < 10; $i++)
+      for($i = 0; $i < 8; $i++)
       {
         echo $shared_memory_array[$i] . ", ";
       }
       echo "<br />";
-
-
 
       //----- WRITE TO THE SHARED MEMORY -----
       if(isset($_REQUEST['shutdown']))			//Include "?shutdown" at the end of the url to write these bytes which causes the C application to exit
@@ -179,13 +172,22 @@
 
     //Delete the semaphore (use only if none of your processes require the semaphore anymore)
     //sem_remove($semaphore_id);				//Destroy the semaphore for all processes
-
-    echo "Complete<br />";
   }
 
-  accessSHMEM();
+  //End of Functions
 
-  createDefaults();
+  accessSHMEM();   //Called to get initial status
+
+  createDefaults();   //If no defaults.config is provided, one will be generated
+
+  $defaults = "config/defaults.conf";
+  $settings = 'config/settings.conf';
+
+  if(file_exists($settings) == FALSE) {   //Source Repository does not contain settings, these are generated from
+    if (!copy($defaults, $settings)) {    //defaults.config the first time the webserver is loaded
+        echo "failed to generate settings...\n";
+    }
+  }
 ?>
 
 <!-- Header -->
