@@ -336,6 +336,7 @@
 
 	int Update_Settings() {
 		printf("flag\n");
+		return 0;
 	}
 //**************END***************//
 
