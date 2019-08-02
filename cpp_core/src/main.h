@@ -12,6 +12,10 @@
   #include <signal.h>
   #include <fstream>
 
+  
+  #include <sys/shm.h>		//Used for shared memory
+  #include <sys/sem.h>		//Used for semaphores
+
   #include <NDI/Processing.NDI.Lib.h>
   #include <PicoPNG/picopng.hpp>
 
@@ -27,6 +31,31 @@
 
   std::string parseLine(uint8_t line);  // read line from config file
 
-  NDIlib_video_frame_v2_t createFrame(const char stream_name[], bool testImg);
+  NDIlib_video_frame_v2_t createFrame(const char stream_name[], bool testImg);  // gets basic frame information from PHP config file
+
+  void initialiseSHMEM(); //Shared Memory Initialise Declaration 
+
+  //----- SEMAPHORE -----
+  //On linux systems this union is probably already defined in the included sys/sem.h, but if not use this default basic definition:
+  union semun {
+    int val;
+    struct semid_ds *buf;
+    unsigned short *array;
+  };
+
+  //----- SHARED MEMORY -----
+  struct shared_memory1_struct {
+    char some_data[1024];
+  };
+  #define	SEMAPHORE_KEY			291623581  			//Semaphore unique key (MAKE DIFFERENT TO PHP KEY)
+  #define	SHARED_MEMORY_KEY 		672213396   		//Shared memory unique key (SAME AS PHP KEY)
+
+  static int semaphore1_get_access(void);
+  static int semaphore1_release_access(void);
+
+  static int semaphore1_id;
+  void *shared_memory1_pointer = (void *)0;
+  struct shared_memory1_struct *shared_memory1;
+  int shared_memory1_id;
 
 #endif
