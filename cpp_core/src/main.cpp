@@ -146,7 +146,8 @@
 
 		listener.release(frames);
 
-		WriteSHMEM(STREAM_ACTIVE, 255);
+		int StreamStatus = 255;
+		WriteSHMEM(STREAM_ACTIVE, StreamStatus);
 
 		std::cout << "--------Streams Initialised--------" << std::endl;
 		// if debugging is enabled, the while loop will break after the specified period
@@ -156,9 +157,20 @@
 
 		while(protonect_shutdown == false) {
 			// indefinite loop starts here ...
-			if (!NDIlib_send_get_no_connections(sender[0], 10000)) {}
+			
+			if (!NDIlib_send_get_no_connections(sender[0], 10000)) 
+			{
+				if(StreamStatus != 0) {
+					StreamStatus = 0;
+					WriteSHMEM(STREAM_ACTIVE, StreamStatus);
+				}
+			}
 			else
 			{	
+				if(StreamStatus == 0) {
+					StreamStatus = 255;
+					WriteSHMEM(STREAM_ACTIVE, StreamStatus);
+				}
 				if (!listener.waitForNewFrame(frames, 10*1000)) // 10 seconds
 				{
 					std::cout << "timeout! Device Not Responding" << std::endl;
